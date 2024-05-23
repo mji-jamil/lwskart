@@ -3,15 +3,15 @@ import mongoose, { Schema } from "mongoose";
 const addressSchema = new Schema({
     name: {
         type: String,
-        required: true,
+        required: false,
     },
     address: {
         type: String,
-        required: true,
+        required: false,
     },
     postCode: {
         type: String,
-        required: true,
+        required: false,
     },
     phoneNumber: {
         type: String,
@@ -41,7 +41,8 @@ const userSchema = new Schema({
         required: false,
     },
     shippingAddress: {
-
+        type: addressSchema,
+        required: false
     },
     billingAddress: {
         type: addressSchema,

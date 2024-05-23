@@ -59,14 +59,18 @@ export default async function Account() {
                             </Link>
                         </div>
                         <div className="space-y-1">
-                            <h4 className="text-gray-700 font-medium">
-
-                            </h4>
+                            <h4 className="text-gray-700 font-medium"></h4>
                             <p className="text-gray-800">
-
+                                {userData?.shippingAddress?.name}
                             </p>
                             <p className="text-gray-800">
-
+                                {userData?.shippingAddress?.address}
+                            </p>
+                            <p className="text-gray-800">
+                                {userData?.shippingAddress?.postCode}
+                            </p>
+                            <p className="text-gray-800">
+                                {userData?.shippingAddress?.phoneNumber}
                             </p>
                             <p className="text-gray-800"></p>
                         </div>
