@@ -1,8 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { auth } from "@/auth";
+import Logout from "@/components/auth/Logout";
+import {dbConnect} from "@/service/mongo";
 
-export default function Navbar() {
+export default async function Navbar() {
+    await dbConnect();
+    const session = await auth();
     return (
         <>
             <nav className="bg-gray-800">
@@ -138,12 +143,27 @@ export default function Navbar() {
                                 Contact us
                             </Link>
                         </div>
-                        <Link
-                            href="/login"
-                            className="text-gray-200 hover:text-white transition"
-                        >
-                            Login
-                        </Link>
+                        {session?.user ? (
+                            <>
+                                <div>
+                                    <span className="text-gray-200 hover:text-white transition">
+                                        {session.user?.name}
+                                    </span>
+                                    <span className="text-white"> | </span>
+                                    <span className="text-gray-200 hover:text-white transition">
+                                        {" "}
+                                        <Logout />
+                                    </span>
+                                </div>
+                            </>
+                        ) : (
+                            <Link
+                                href="/login"
+                                className="text-gray-200 hover:text-white transition"
+                            >
+                                Login
+                            </Link>
+                        )}
                     </div>
                 </div>
             </nav>

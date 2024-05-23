@@ -4,6 +4,7 @@ import Navbar from "@/components/static/Navbar";
 import Header from "@/components/static/Header";
 import Footer from "@/components/static/Footer";
 import Copyright from "@/components/static/Copyright";
+import {dbConnect} from "@/service/mongo";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -22,7 +23,8 @@ export const metadata = {
         "LWSkart is your go-to eCommerce platform offering a wide range of products at unbeatable prices.",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+    await dbConnect();
     return (
         <html lang="en">
             <body className={`${poppins.variable} ${roboto.variable}`}>

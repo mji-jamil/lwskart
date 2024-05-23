@@ -1,10 +1,18 @@
 import Link from "next/link";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
+import { getUserData } from "@/database/queries";
 
-export default function Account() {
+export default async function Account() {
+    const session = await auth();
+    if (!session) {
+        redirect("/login");
+    }
+    const userData = await getUserData(session?.user?.email);
     return (
         <>
             <div className="container py-4 flex items-center gap-3">
-                <Link href="#" className="text-primary text-base">
+                <Link href="/" className="text-primary text-base">
                     <i className="fa-solid fa-house"></i>
                 </Link>
                 <span className="text-sm text-gray-400">
@@ -20,16 +28,21 @@ export default function Account() {
                             <h3 className="font-medium text-gray-800 text-lg">
                                 Personal Profile
                             </h3>
-                            <a href="#" className="text-primary">
+                            <Link
+                                href="/update/profile"
+                                className="text-primary"
+                            >
                                 Edit
-                            </a>
+                            </Link>
                         </div>
                         <div className="space-y-1">
                             <h4 className="text-gray-700 font-medium">
-                                John Doe
+                                {userData?.name}
                             </h4>
-                            <p className="text-gray-800">example@mail.com</p>
-                            <p className="text-gray-800">0811 8877 988</p>
+                            <p className="text-gray-800">{userData?.email}</p>
+                            <p className="text-gray-800">
+                                {userData?.phoneNumber}
+                            </p>
                         </div>
                     </div>
 
@@ -38,19 +51,24 @@ export default function Account() {
                             <h3 className="font-medium text-gray-800 text-lg">
                                 Shipping address
                             </h3>
-                            <a href="#" className="text-primary">
+                            <Link
+                                href="/update/shipping"
+                                className="text-primary"
+                            >
                                 Edit
-                            </a>
+                            </Link>
                         </div>
                         <div className="space-y-1">
                             <h4 className="text-gray-700 font-medium">
-                                John Doe
+
                             </h4>
                             <p className="text-gray-800">
-                                Medan, North Sumatera
+
                             </p>
-                            <p className="text-gray-800">20371</p>
-                            <p className="text-gray-800">0811 8877 988</p>
+                            <p className="text-gray-800">
+
+                            </p>
+                            <p className="text-gray-800"></p>
                         </div>
                     </div>
 
@@ -59,9 +77,12 @@ export default function Account() {
                             <h3 className="font-medium text-gray-800 text-lg">
                                 Billing address
                             </h3>
-                            <a href="#" className="text-primary">
+                            <Link
+                                href="/update/billing"
+                                className="text-primary"
+                            >
                                 Edit
-                            </a>
+                            </Link>
                         </div>
                         <div className="space-y-1">
                             <h4 className="text-gray-700 font-medium">
