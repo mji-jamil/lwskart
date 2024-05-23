@@ -37,11 +37,14 @@ export default async function Account() {
                         </div>
                         <div className="space-y-1">
                             <h4 className="text-gray-700 font-medium">
-                                Name: {userData?.name}
+                                Name: {userData?.name || "No Data Available"}
                             </h4>
-                            <p className="text-gray-800">Email: {userData?.email}</p>
                             <p className="text-gray-800">
-                                Phone Number: {userData?.phoneNumber || "Not Given"}
+                                Email: {userData?.email || "No Data Available"}
+                            </p>
+                            <p className="text-gray-800">
+                                Phone Number:{" "}
+                                {userData?.phoneNumber || "No Data Available"}
                             </p>
                         </div>
                     </div>
@@ -61,16 +64,24 @@ export default async function Account() {
                         <div className="space-y-1">
                             <h4 className="text-gray-700 font-medium"></h4>
                             <p className="text-gray-800">
-                                Name: {userData?.shippingAddress?.name}
+                                Name:{" "}
+                                {userData?.shippingAddress?.name ||
+                                    "No Data Available"}
                             </p>
                             <p className="text-gray-800">
-                                Address: {userData?.shippingAddress?.address}
+                                Address:{" "}
+                                {userData?.shippingAddress?.address ||
+                                    "No Data Available"}
                             </p>
                             <p className="text-gray-800">
-                                Post Code: {userData?.shippingAddress?.postCode}
+                                Post Code:{" "}
+                                {userData?.shippingAddress?.postCode ||
+                                    "No Data Available"}
                             </p>
                             <p className="text-gray-800">
-                                Phone Number: {userData?.shippingAddress?.phoneNumber}
+                                Phone Number:{" "}
+                                {userData?.shippingAddress?.phoneNumber ||
+                                    "No Data Available"}
                             </p>
                             <p className="text-gray-800"></p>
                         </div>
@@ -90,13 +101,25 @@ export default async function Account() {
                         </div>
                         <div className="space-y-1">
                             <h4 className="text-gray-700 font-medium">
-                                Name: {userData?.billingAddress?.name}
+                                Name:{" "}
+                                {userData?.billingAddress?.name ||
+                                    "No Data Available"}
                             </h4>
                             <p className="text-gray-800">
-                                Address: {userData?.billingAddress?.address}
+                                Address:{" "}
+                                {userData?.billingAddress?.address ||
+                                    "No Data Available"}
                             </p>
-                            <p className="text-gray-800">Post Code: {userData?.billingAddress?.postCode}</p>
-                            <p className="text-gray-800">Phone Number: {userData?.billingAddress?.phoneNumber}</p>
+                            <p className="text-gray-800">
+                                Post Code:{" "}
+                                {userData?.billingAddress?.postCode ||
+                                    "No Data Available"}
+                            </p>
+                            <p className="text-gray-800">
+                                Phone Number:{" "}
+                                {userData?.billingAddress?.phoneNumber ||
+                                    "No Data Available"}
+                            </p>
                         </div>
                     </div>
                 </div>
