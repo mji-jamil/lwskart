@@ -43,7 +43,7 @@ export default async function RelatedProducts({ category }) {
                                 </div>
                             </div>
                             <div className="pt-4 pb-3 px-4">
-                                <Link href="#">
+                                <Link href={`/products/${product?._id}`}>
                                     <h4 className="uppercase font-medium text-base mb-2 text-gray-800 hover:text-primary transition">
                                         {product?.title}
                                     </h4>
