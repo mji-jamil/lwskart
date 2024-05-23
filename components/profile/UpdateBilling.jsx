@@ -51,7 +51,7 @@ export default function UpdateBilling({ user }) {
         <div className="contain py-16">
             <div className="max-w-lg mx-auto shadow px-6 py-7 rounded overflow-hidden">
                 <h2 className="text-2xl uppercase font-medium mb-1">
-                    Update Shipping
+                    Update Billing Details
                 </h2>
                 {error && (
                     <div className="text-xl text-red-500 text-center">

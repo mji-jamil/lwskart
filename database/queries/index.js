@@ -43,6 +43,7 @@ export async function getUserData(email) {
 }
 
 export async function updateShippingData(data) {
+    await dbConnect();
     try {
         const { email, shippingAddress } = data;
         if (!email) throw new Error("Email is required to update shipping data.");
@@ -63,21 +64,22 @@ export async function updateShippingData(data) {
 }
 
 export async function updateBillingData(data) {
+    await dbConnect()
     try {
-        const { email, shippingAddress } = data;
+        const { email, billingAddress } = data;
         if (!email) throw new Error("Email is required to update shipping data.");
 
         const user = await userModel.findOneAndUpdate(
             { email: email },
-            { $set: { "shippingAddress": shippingAddress } },
+            { $set: { "billingAddress": billingAddress } },
             { new: true }
         );
 
         if (!user) throw new Error("User not found.");
 
-        return { success: true, message: "Shipping address updated successfully.", user };
+        return { success: true, message: "Billing address updated successfully.", user };
     } catch (error) {
-        console.error("Error updating shipping data:", error);
+        console.error("Error updating billing data:", error);
         return { error: error.message };
     }
 }
