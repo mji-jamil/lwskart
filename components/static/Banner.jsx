@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Banner() {
+export default function Banner({dictionary}) {
     return (
         <>
             <div
@@ -23,7 +23,7 @@ export default function Banner() {
                             className="bg-primary border border-primary text-white px-8 py-3 font-medium
                             rounded-md hover:bg-transparent hover:text-primary"
                         >
-                            Shop Now
+                            {dictionary.shop_now}
                         </Link>
                     </div>
                 </div>

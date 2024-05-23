@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function Feature() {
+export default function Feature({dictionary}) {
     return (
         <>
             <div className="container py-16">
@@ -15,7 +15,7 @@ export default function Feature() {
                         />
                         <div>
                             <h4 className="font-medium capitalize text-lg">
-                                Free Shipping
+                                {dictionary.free_shipping}
                             </h4>
                             <p className="text-gray-500 text-sm">
                                 Order over $200
@@ -32,10 +32,10 @@ export default function Feature() {
                         />
                         <div>
                             <h4 className="font-medium capitalize text-lg">
-                                Money Rturns
+                                {dictionary.money_returns}
                             </h4>
                             <p className="text-gray-500 text-sm">
-                                30 days money returs
+                                {dictionary?.days_money_returns}
                             </p>
                         </div>
                     </div>
@@ -49,10 +49,10 @@ export default function Feature() {
                         />
                         <div>
                             <h4 className="font-medium capitalize text-lg">
-                                24/7 Support
+                                {dictionary?._support}
                             </h4>
                             <p className="text-gray-500 text-sm">
-                                Customer support
+                                {dictionary?.customer_support}
                             </p>
                         </div>
                     </div>

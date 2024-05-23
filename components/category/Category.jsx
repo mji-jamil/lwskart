@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Category() {
+export default function Category({dictionary}) {
     return (
         <>
             <div className="container py-16">
                 <h2 className="text-2xl text-gray-800 uppercase mb-6 font-bold font-roboto">
-                    shop by category
+                    {dictionary?.shop_by_category}
                 </h2>
                 <div className="grid grid-cols-3 gap-3">
                     <div className="relative rounded-sm overflow-hidden group">
@@ -21,7 +21,7 @@ export default function Category() {
                             href="/category/electronics"
                             className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
                         >
-                            Electronics
+                            {dictionary?.electronics}
                         </Link>
                     </div>
                     <div className="relative rounded-sm overflow-hidden group">
@@ -36,7 +36,7 @@ export default function Category() {
                             href="/category/skincare"
                             className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
                         >
-                            Skincare
+                            {dictionary?.skincare}
                         </Link>
                     </div>
                     <div className="relative rounded-sm overflow-hidden group">
@@ -51,7 +51,7 @@ export default function Category() {
                             href="/category/furniture"
                             className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
                         >
-                            Furniture
+                            {dictionary?.furniture}
                         </Link>
                     </div>
                     <div className="relative rounded-sm overflow-hidden group">
@@ -66,7 +66,7 @@ export default function Category() {
                             href="/category/dress"
                             className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
                         >
-                            Dresses
+                            {dictionary?.dresses}
                         </Link>
                     </div>
                     <div className="relative rounded-sm overflow-hidden group">
@@ -81,7 +81,7 @@ export default function Category() {
                             href="/category/shoe"
                             className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
                         >
-                            Shoes
+                            {dictionary?.shoes}
                         </Link>
                     </div>
                     <div className="relative rounded-sm overflow-hidden group">
@@ -96,7 +96,7 @@ export default function Category() {
                             href="/category/watches"
                             className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
                         >
-                            Watches
+                            {dictionary?.watches}
                         </Link>
                     </div>
                 </div>

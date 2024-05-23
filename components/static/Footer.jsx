@@ -16,8 +16,7 @@ export default function Footer() {
                         />
                         <div className="mr-2">
                             <p className="text-gray-500">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Quia, hic?
+                                LWSkart is your go-to eCommerce platform offering a wide range of products at unbeatable prices.
                             </p>
                         </div>
                         <div className="flex space-x-5">

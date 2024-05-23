@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-export default function TrendingProducts({ trending }) {
+export default function TrendingProducts({ trending,dictionary }) {
     return (
         <>
             <div className="container pb-16">
                 <h2 className="text-2xl font-bold text-gray-800 uppercase mb-6">
-                    Trending Products
+                    {dictionary?.trending_products}
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {
@@ -74,7 +74,7 @@ export default function TrendingProducts({ trending }) {
                                     href="/addToCart"
                                     className="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition"
                                 >
-                                    Add to cart
+                                    {dictionary?.add_to_cart}
                                 </Link>
                             </div>
                         ))
