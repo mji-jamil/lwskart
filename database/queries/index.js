@@ -105,6 +105,17 @@ export async function getTrendingProducts() {
     }
 }
 
+export async function getAllProducts() {
+    try {
+        const allProducts = await productModel.find({});
+        return allProducts;
+    } catch (error) {
+        console.error("Error fetching all products:", error);
+        throw error;
+    }
+}
+
+
 export async function getProductById(productId) {
     try {
         const product = await productModel.findById(productId);
@@ -120,7 +131,8 @@ export async function getProductById(productId) {
 
 export async function getProductsByCategory(category) {
     try {
-        const products = await productModel.find({ category: category });
+        const capitalizedCategory = category.charAt(0).toUpperCase() + category.slice(1);
+        const products = await productModel.find({ category: capitalizedCategory });
         if (!products || products.length === 0) {
             throw new Error("No products found in the specified category");
         }

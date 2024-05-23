@@ -44,21 +44,13 @@ export default function SingleProduct({ product }) {
                     </h2>
                     <div className="flex items-center mb-4">
                         <div className="flex gap-1 text-sm text-yellow-400">
-                            <span>
-                                <i className="fa-solid fa-star"></i>
-                            </span>
-                            <span>
-                                <i className="fa-solid fa-star"></i>
-                            </span>
-                            <span>
-                                <i className="fa-solid fa-star"></i>
-                            </span>
-                            <span>
-                                <i className="fa-solid fa-star"></i>
-                            </span>
-                            <span>
-                                <i className="fa-solid fa-star"></i>
-                            </span>
+                            {Array.from({ length: 5 }, (_, i) => (
+                                <span key={i}>
+                                    <i
+                                        className={`fa-solid fa-star${i < Math.round(product.rating) ? "" : "-half-alt"}`}
+                                    ></i>
+                                </span>
+                            ))}
                         </div>
                         <div className="text-xs text-gray-500 ml-3">
                             ({`${product?.review}`} Reviews)
@@ -68,48 +60,49 @@ export default function SingleProduct({ product }) {
                         <p className="text-gray-800 font-semibold space-x-2">
                             <span>
                                 Availability:{" "}
-                                {
-                                    product?.stock > 0 ? (
-                                        <span className="text-green-600">
-                                            In Stock
-                                        </span>
-                                    ) : (
-                                        <span
-                                            className="text-red-600"
-                                        >
-                                            Sold Out
-                                        </span>
-                                    )
-                                }
+                                {product?.stock > 0 ? (
+                                    <span className="text-green-600">
+                                        In Stock
+                                    </span>
+                                ) : (
+                                    <span className="text-red-600">
+                                        Sold Out
+                                    </span>
+                                )}
                             </span>
-
                         </p>
                         <p className="space-x-2">
                             <span className="text-gray-800 font-semibold">
                                 Brand:{" "}
                             </span>
-                            <span className="text-gray-600">{product?.brand}</span>
+                            <span className="text-gray-600">
+                                {product?.brand}
+                            </span>
                         </p>
                         <p className="space-x-2">
                             <span className="text-gray-800 font-semibold">
                                 Category:{" "}
                             </span>
-                            <span className="text-gray-600">{product?.category}</span>
+                            <span className="text-gray-600">
+                                {product?.category}
+                            </span>
                         </p>
-
                     </div>
                     <div className="flex items-baseline mb-1 space-x-2 font-roboto mt-4">
                         <p className="text-xl text-primary font-semibold">
-                            ${(product?.price + (product?.price * product?.discountPercentage / 100)).toFixed(2)}
+                            $
+                            {(
+                                product?.price -
+                                (product?.price * product?.discountPercentage) /
+                                    100
+                            ).toFixed(2)}
                         </p>
                         <p className="text-base text-gray-400 line-through">
                             ${product?.price}
                         </p>
                     </div>
 
-                    <p className="mt-4 text-gray-600">
-                        {product?.description}
-                    </p>
+                    <p className="mt-4 text-gray-600">{product?.description}</p>
 
                     <div className="mt-4">
                         <h3 className="text-sm text-gray-800 uppercase mb-1">
@@ -166,9 +159,9 @@ export default function SingleProduct({ product }) {
                     </div>
                 </div>
             </div>
-            <hr/>
+            <hr />
             <div className="mt-8">
-                <RelatedProducts category={product?.category}/>
+                <RelatedProducts category={product?.category} />
             </div>
         </>
     );

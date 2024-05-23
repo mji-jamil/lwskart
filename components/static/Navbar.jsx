@@ -125,7 +125,7 @@ export default async function Navbar() {
                                 Home
                             </Link>
                             <Link
-                                href="/shop"
+                                href="/products"
                                 className="text-gray-200 hover:text-white transition"
                             >
                                 Shop
