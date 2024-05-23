@@ -37,11 +37,11 @@ export default async function Account() {
                         </div>
                         <div className="space-y-1">
                             <h4 className="text-gray-700 font-medium">
-                                {userData?.name}
+                                Name: {userData?.name}
                             </h4>
-                            <p className="text-gray-800">{userData?.email}</p>
+                            <p className="text-gray-800">Email: {userData?.email}</p>
                             <p className="text-gray-800">
-                                {userData?.phoneNumber}
+                                Phone Number: {userData?.phoneNumber || "Not Given"}
                             </p>
                         </div>
                     </div>
@@ -61,16 +61,16 @@ export default async function Account() {
                         <div className="space-y-1">
                             <h4 className="text-gray-700 font-medium"></h4>
                             <p className="text-gray-800">
-                                {userData?.shippingAddress?.name}
+                                Name: {userData?.shippingAddress?.name}
                             </p>
                             <p className="text-gray-800">
-                                {userData?.shippingAddress?.address}
+                                Address: {userData?.shippingAddress?.address}
                             </p>
                             <p className="text-gray-800">
-                                {userData?.shippingAddress?.postCode}
+                                Post Code: {userData?.shippingAddress?.postCode}
                             </p>
                             <p className="text-gray-800">
-                                {userData?.shippingAddress?.phoneNumber}
+                                Phone Number: {userData?.shippingAddress?.phoneNumber}
                             </p>
                             <p className="text-gray-800"></p>
                         </div>
@@ -90,13 +90,13 @@ export default async function Account() {
                         </div>
                         <div className="space-y-1">
                             <h4 className="text-gray-700 font-medium">
-                                John Doe
+                                Name: {userData?.billingAddress?.name}
                             </h4>
                             <p className="text-gray-800">
-                                Medan, North Sumatera
+                                Address: {userData?.billingAddress?.address}
                             </p>
-                            <p className="text-gray-800">20317</p>
-                            <p className="text-gray-800">0811 8877 988</p>
+                            <p className="text-gray-800">Post Code: {userData?.billingAddress?.postCode}</p>
+                            <p className="text-gray-800">Phone Number: {userData?.billingAddress?.phoneNumber}</p>
                         </div>
                     </div>
                 </div>

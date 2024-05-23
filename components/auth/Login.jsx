@@ -22,7 +22,7 @@ export default function Login() {
                 router.push("/account");
             }
         } catch (error) {
-            setError(error);
+            setError(error.message);
         }
     }
     return (

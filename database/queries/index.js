@@ -61,3 +61,23 @@ export async function updateShippingData(data) {
         return { error: error.message };
     }
 }
+
+export async function updateBillingData(data) {
+    try {
+        const { email, shippingAddress } = data;
+        if (!email) throw new Error("Email is required to update shipping data.");
+
+        const user = await userModel.findOneAndUpdate(
+            { email: email },
+            { $set: { "shippingAddress": shippingAddress } },
+            { new: true }
+        );
+
+        if (!user) throw new Error("User not found.");
+
+        return { success: true, message: "Shipping address updated successfully.", user };
+    } catch (error) {
+        console.error("Error updating shipping data:", error);
+        return { error: error.message };
+    }
+}
