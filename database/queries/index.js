@@ -4,13 +4,14 @@ import { userModel } from "@/models/user-model";
 import {replaceMongoIdInObject} from "@/utils/data-util";
 
 export async function updateData(formData) {
-    console.log(userModel);
     await dbConnect();
     const { email, name, password, phoneNumber } = formData;
     try {
         const updateFields = {
             name,
+            email,
             phoneNumber,
+            password
         };
         if (password) {
             updateFields.password = password;

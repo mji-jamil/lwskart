@@ -19,7 +19,7 @@ export default function Login() {
             if (!!response.error) {
                 setError(response.error.message);
             } else {
-                router.push("http://localhost:3000/account");
+                router.push("/account");
             }
         } catch (error) {
             setError(error);

@@ -41,9 +41,7 @@ const userSchema = new Schema({
         required: false,
     },
     shippingAddress: {
-        // type: addressSchema,
-        // required: false,
-        type: String,
+
     },
     billingAddress: {
         type: addressSchema,
