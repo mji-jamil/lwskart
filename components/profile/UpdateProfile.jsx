@@ -7,7 +7,7 @@ export default function UpdateProfile({ user }) {
     const [formData, setFormData] = useState({
         name: user?.name || "",
         email: user?.email || "",
-        password: "",
+        password: user?.password || "",
         phoneNumber: user?.phoneNumber || "",
     });
     const [error, setError] = useState("");
