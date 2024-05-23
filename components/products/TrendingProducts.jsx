@@ -17,7 +17,7 @@ export default function TrendingProducts({ trending }) {
                                     <Image
                                         src={product.thumbnail}
                                         alt={product.title || 'Product Image'}
-                                        layout="fill"
+                                        fill
                                         objectFit="cover"
                                         className="w-full"
                                     />
@@ -43,16 +43,16 @@ export default function TrendingProducts({ trending }) {
                                 </div>
                                 <div className="pt-4 pb-3 px-4">
                                     <Link href={`/products/${product._id}`}>
-                                        <h4 className="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
-                                            {product.title}
+                                        <h4 className="uppercase font-medium text-base mb-2 text-gray-800 hover:text-primary transition">
+                                            {product?.title}
                                         </h4>
                                     </Link>
                                     <div className="flex items-baseline mb-1 space-x-2">
                                         <p className="text-xl text-primary font-semibold">
-                                            ${product.price.toFixed(2)}
+                                            ${product?.price.toFixed(2)}
                                         </p>
                                         <p className="text-sm text-gray-400 line-through">
-                                            ${(product.price + (product.price * product.discountPercentage / 100)).toFixed(2)}
+                                            ${(product?.price + (product.price * product.discountPercentage / 100)).toFixed(2)}
                                         </p>
                                     </div>
                                     <div className="flex items-center">
@@ -60,13 +60,13 @@ export default function TrendingProducts({ trending }) {
                                             {
                                                 Array.from({ length: 5 }, (_, i) => (
                                                     <span key={i}>
-                                                        <i className={`fa-solid fa-star${i < Math.round(product.rating) ? '' : '-half-alt'}`}></i>
+                                                        <i className={`fa-solid fa-star${i < Math.round(product?.rating) ? '' : '-half-alt'}`}></i>
                                                     </span>
                                                 ))
                                             }
                                         </div>
                                         <div className="text-xs text-gray-500 ml-3">
-                                            ({product.rating})
+                                            ({product?.rating})
                                         </div>
                                     </div>
                                 </div>

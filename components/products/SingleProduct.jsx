@@ -26,14 +26,18 @@ export default function SingleProduct({ product }) {
                     />
                     <div className="grid grid-cols-5 gap-4 mt-4">
                         {product?.images.map((image, i) => (
-                            <Image
-                                src={image}
-                                alt={`Product Image ${i + 1}`}
-                                className="w-full cursor-pointer border border-primary"
-                                width={120}
-                                height={120}
+                            <div
                                 key={i}
-                            />
+                                className="w-24 h-24 border border-primary overflow-hidden"
+                            >
+                                <Image
+                                    src={image}
+                                    alt={`Product Image ${i + 1}`}
+                                    className="w-full h-full object-cover cursor-pointer"
+                                    width={120}
+                                    height={120}
+                                />
+                            </div>
                         ))}
                     </div>
                 </div>
@@ -94,7 +98,7 @@ export default function SingleProduct({ product }) {
                             {(
                                 product?.price -
                                 (product?.price * product?.discountPercentage) /
-                                    100
+                                100
                             ).toFixed(2)}
                         </p>
                         <p className="text-base text-gray-400 line-through">

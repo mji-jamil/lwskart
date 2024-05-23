@@ -10,13 +10,12 @@ export default function ProductCard({ products }) {
                     className="bg-white shadow rounded overflow-hidden group"
                     key={product._id}
                 >
-                    <div className="relative">
+                    <div className="relative h-60 w-full">
                         <Image
                             src={product?.thumbnail}
                             alt={product?.title}
-                            className="w-full"
-                            width={240}
-                            height={240}
+                            className="w-full h-full object-cover"
+                            fill
                         />
                         <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
                             <a
@@ -37,7 +36,7 @@ export default function ProductCard({ products }) {
                     </div>
                     <div className="pt-4 pb-3 px-4">
                         <Link href={`/products/${product._id}`}>
-                            <h4 className="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
+                            <h4 className="uppercase font-medium text-base mb-2 text-gray-800 hover:text-primary transition">
                                 {product?.title}
                             </h4>
                         </Link>

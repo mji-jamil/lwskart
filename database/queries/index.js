@@ -115,6 +115,26 @@ export async function getAllProducts() {
     }
 }
 
+export async function getAllCategories() {
+    try {
+        const categories = await productModel.distinct("category");
+        return categories;
+    } catch (error) {
+        console.error("Error fetching all categories:", error);
+        throw error;
+    }
+}
+
+export async function getProductCountByCategory(category) {
+    try {
+        const productCount = await productModel.countDocuments({ category: category });
+        return productCount;
+    } catch (error) {
+        console.error(`Error fetching product count for category ${category}:`, error);
+        throw error;
+    }
+}
+
 
 export async function getProductById(productId) {
     try {

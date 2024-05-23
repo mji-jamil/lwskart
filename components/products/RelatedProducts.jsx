@@ -15,13 +15,12 @@ export default async function RelatedProducts({ category }) {
                 <div className="grid grid-cols-4 gap-6">
                     {firstFourProducts.map((product, index) => (
                         <div className="bg-white shadow rounded overflow-hidden group" key={index}>
-                            <div className="relative h-80">
+                            <div className="relative h-60 w-full">
                                 <Image
                                     src={product?.thumbnail}
                                     alt={product?.title}
-                                    className="w-full"
-                                    width={240}
-                                    height={240}
+                                    className="w-full h-full object-cover"
+                                    fill
                                 />
                                 <div
                                     className="absolute inset-0 bg-black bg-opacity-40 flex items-center
@@ -45,7 +44,7 @@ export default async function RelatedProducts({ category }) {
                             </div>
                             <div className="pt-4 pb-3 px-4">
                                 <Link href="#">
-                                    <h4 className="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
+                                    <h4 className="uppercase font-medium text-base mb-2 text-gray-800 hover:text-primary transition">
                                         {product?.title}
                                     </h4>
                                 </Link>
