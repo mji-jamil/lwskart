@@ -11,32 +11,32 @@ export default function Category() {
                 <div className="grid grid-cols-3 gap-3">
                     <div className="relative rounded-sm overflow-hidden group">
                         <Image
-                            src="/category/category-1.jpg"
+                            src="/category/electronics.jpg"
+                            alt="category 1"
+                            className="w-full"
+                            width={200}
+                            height={200}
+                        />
+                        <Link
+                            href="/category/electronics"
+                            className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
+                        >
+                            Electronics
+                        </Link>
+                    </div>
+                    <div className="relative rounded-sm overflow-hidden group">
+                        <Image
+                            src="/category/skincare.webp"
                             alt="category 1"
                             className="w-full"
                             width={300}
                             height={300}
                         />
                         <Link
-                            href="/bedroom"
+                            href="/category/skincare"
                             className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
                         >
-                            Bedroom
-                        </Link>
-                    </div>
-                    <div className="relative rounded-sm overflow-hidden group">
-                        <Image
-                            src="/category/category-2.jpg"
-                            alt="category 1"
-                            className="w-full"
-                            width={500}
-                            height={500}
-                        />
-                        <Link
-                            href="/Mattress"
-                            className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
-                        >
-                            Mattress
+                            Skincare
                         </Link>
                     </div>
                     <div className="relative rounded-sm overflow-hidden group">
@@ -48,55 +48,55 @@ export default function Category() {
                             height={500}
                         />
                         <Link
-                            href="/outdoor"
+                            href="/category/furniture"
                             className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
                         >
-                            Outdoor
+                            Furniture
                         </Link>
                     </div>
                     <div className="relative rounded-sm overflow-hidden group">
                         <Image
-                            src="/category/category-4.jpg"
+                            src="/category/shirt.jpg"
                             alt="category 1"
                             className="w-full"
                             width={500}
                             height={500}
                         />
                         <Link
-                            href="/sofa"
+                            href="/category/dress"
                             className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
                         >
-                            Sofa
+                            Dresses
                         </Link>
                     </div>
                     <div className="relative rounded-sm overflow-hidden group">
                         <Image
-                            src="/category/category-5.jpg"
+                            src="/category/shoe.jpg"
+                            alt="category 1"
+                            className="w-full"
+                            width={300}
+                            height={300}
+                        />
+                        <Link
+                            href="/category/shoe"
+                            className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
+                        >
+                            Shoes
+                        </Link>
+                    </div>
+                    <div className="relative rounded-sm overflow-hidden group">
+                        <Image
+                            src="/category/watch.webp"
                             alt="category 1"
                             className="w-full"
                             width={500}
                             height={500}
                         />
                         <Link
-                            href="/living-room"
+                            href="/category/watches"
                             className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
                         >
-                            Living Room
-                        </Link>
-                    </div>
-                    <div className="relative rounded-sm overflow-hidden group">
-                        <Image
-                            src="/category/category-6.jpg"
-                            alt="category 1"
-                            className="w-full"
-                            width={500}
-                            height={500}
-                        />
-                        <Link
-                            href="/kitchen"
-                            className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
-                        >
-                            Kitchen
+                            Watches
                         </Link>
                     </div>
                 </div>

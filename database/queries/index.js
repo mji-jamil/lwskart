@@ -2,6 +2,7 @@
 import { dbConnect } from "@/service/mongo";
 import { userModel } from "@/models/user-model";
 import {replaceMongoIdInObject} from "@/utils/data-util";
+import {productModel} from "@/models/product-model";
 
 export async function updateData(formData) {
     await dbConnect();
@@ -81,5 +82,51 @@ export async function updateBillingData(data) {
     } catch (error) {
         console.error("Error updating billing data:", error);
         return { error: error.message };
+    }
+}
+
+export async function getNewArrivals() {
+    try {
+        const newArrivals = await productModel.find({ newArrival: true });
+        return newArrivals;
+    } catch (error) {
+        console.error("Error fetching new arrivals:", error);
+        throw error;
+    }
+}
+
+export async function getTrendingProducts() {
+    try {
+        const trendingProducts = await productModel.find({ trending: true });
+        return trendingProducts;
+    } catch (error) {
+        console.error("Error fetching trending products:", error);
+        throw error;
+    }
+}
+
+export async function getProductById(productId) {
+    try {
+        const product = await productModel.findById(productId);
+        if (!product) {
+            throw new Error("Product not found");
+        }
+        return product;
+    } catch (error) {
+        console.error("Error fetching product by ID:", error);
+        throw error;
+    }
+}
+
+export async function getProductsByCategory(category) {
+    try {
+        const products = await productModel.find({ category: category });
+        if (!products || products.length === 0) {
+            throw new Error("No products found in the specified category");
+        }
+        return products;
+    } catch (error) {
+        console.error("Error fetching products by category:", error);
+        throw error;
     }
 }

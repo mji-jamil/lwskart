@@ -1,9 +1,12 @@
 import SingleProduct from "@/components/products/SingleProduct";
+import { getProductById } from "@/database/queries";
 
-export default function Page() {
+export default async function Page({ params }) {
+    const id = params.id;
+    const product = await getProductById(id);
     return (
         <>
-            <SingleProduct />
+            <SingleProduct product={product} />
         </>
     );
 }

@@ -4,16 +4,19 @@ import Category from "@/components/category/Category";
 import NewArrival from "@/components/products/NewArrival";
 import Ads from "@/components/static/Ads";
 import TrendingProducts from "@/components/products/TrendingProducts";
+import {getNewArrivals, getTrendingProducts} from "@/database/queries";
 
-export default function Home() {
+export default async function Home() {
+    const newArrival = await getNewArrivals();
+    const trending = await getTrendingProducts()
     return (
         <div>
             <Banner />
             <Feature />
             <Category />
-            <NewArrival />
+            <NewArrival newArrival={newArrival} />
             <Ads />
-            <TrendingProducts />
+            <TrendingProducts trending={trending}/>
         </div>
     );
 }

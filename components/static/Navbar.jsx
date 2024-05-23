@@ -24,93 +24,93 @@ export default async function Navbar() {
                             style={{ width: "300px" }}
                         >
                             <Link
-                                href="#"
+                                href="/category/electronics"
                                 className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
                             >
                                 <Image
-                                    src="/icons/sofa.svg"
-                                    alt="sofa"
+                                    src="/icons/electronics.png"
+                                    alt="electronics"
                                     className="w-5 h-5 object-contain"
                                     width={24}
                                     height={24}
                                 />
                                 <span className="ml-6 text-gray-600 text-sm">
-                                    Sofa
+                                    Electronics
                                 </span>
                             </Link>
                             <Link
-                                href="#"
+                                href="/category/skincare"
                                 className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
                             >
                                 <Image
-                                    src="/icons/terrace.svg"
-                                    alt="terrace"
+                                    src="/icons/skincare.png"
+                                    alt="skincare"
                                     className="w-5 h-5 object-contain"
                                     width={24}
                                     height={24}
                                 />
                                 <span className="ml-6 text-gray-600 text-sm">
-                                    Living Room
+                                    Skincare
                                 </span>
                             </Link>
                             <Link
-                                href="#"
+                                href="/category/furniture"
                                 className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
                             >
                                 <Image
-                                    src="/icons/bed.svg"
-                                    alt="bed"
+                                    src="/icons/furniture.png"
+                                    alt="furniture"
                                     className="w-5 h-5 object-contain"
                                     height={24}
                                     width={24}
                                 />
                                 <span className="ml-6 text-gray-600 text-sm">
-                                    Bedroom
+                                    Furniture
                                 </span>
                             </Link>
                             <Link
-                                href="#"
+                                href="/category/dress"
                                 className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
                             >
                                 <Image
-                                    src="/icons/office.svg"
-                                    alt="Office"
+                                    src="/icons/dress.png"
+                                    alt="dress"
                                     width={24}
                                     height={24}
                                     className="w-5 h-5 object-contain"
                                 />
                                 <span className="ml-6 text-gray-600 text-sm">
-                                    Office
+                                    Dress
                                 </span>
                             </Link>
                             <Link
-                                href="#"
+                                href="/category/shoe"
                                 className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
                             >
                                 <Image
-                                    src="/icons/outdoor-cafe.svg"
-                                    alt="Outdoor"
+                                    src="/icons/shoe.png"
+                                    alt="Shoe"
                                     height={24}
                                     width={24}
                                     className="w-5 h-5 object-contain"
                                 />
                                 <span className="ml-6 text-gray-600 text-sm">
-                                    Outdoor
+                                    Shoe
                                 </span>
                             </Link>
                             <Link
-                                href="#"
+                                href="/category/watches"
                                 className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
                             >
                                 <Image
-                                    src="/icons/bed-2.svg"
-                                    alt="Mattress"
+                                    src="/icons/watch.png"
+                                    alt="watch"
                                     height={24}
                                     width={24}
                                     className="w-5 h-5 object-contain"
                                 />
                                 <span className="ml-6 text-gray-600 text-sm">
-                                    Mattress
+                                    Watches
                                 </span>
                             </Link>
                         </div>
@@ -119,7 +119,7 @@ export default async function Navbar() {
                     <div className="flex items-center justify-between flex-grow md:pl-12 py-5">
                         <div className="flex items-center space-x-6 capitalize">
                             <Link
-                                href="/components/static"
+                                href="/"
                                 className="text-gray-200 hover:text-white transition"
                             >
                                 Home

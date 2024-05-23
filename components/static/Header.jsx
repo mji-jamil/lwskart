@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import Cart from "@/components/static/Cart";
+import WishList from "@/components/profile/WishList";
 
 export default function Header() {
     return (
@@ -34,8 +36,8 @@ export default function Header() {
                     </div>
 
                     <div className="flex items-center space-x-4">
-                        <a
-                            href="#"
+                        <Link
+                            href="/wishlist"
                             className="text-center text-gray-700 hover:text-primary transition relative"
                         >
                             <div className="text-2xl">
@@ -45,9 +47,9 @@ export default function Header() {
                             <div className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
                                 8
                             </div>
-                        </a>
-                        <a
-                            href="#"
+                        </Link>
+                        <Link
+                            href="/checkout"
                             className="text-center text-gray-700 hover:text-primary transition relative"
                         >
                             <div className="text-2xl">
@@ -57,7 +59,7 @@ export default function Header() {
                             <div className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
                                 2
                             </div>
-                        </a>
+                        </Link>
                         <Link
                             href="/account"
                             className="text-center text-gray-700 hover:text-primary transition relative"
