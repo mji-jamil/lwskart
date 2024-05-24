@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getProductsByCategory } from "@/database/queries";
 
-export default async function RelatedProducts({ category }) {
+export default async function RelatedProducts({ category, dictionary }) {
     const products = await getProductsByCategory(category);
     const firstFourProducts = products.slice(0, 4);
 
@@ -10,7 +10,7 @@ export default async function RelatedProducts({ category }) {
         <>
             <div className="container pb-16">
                 <h2 className="text-2xl font-medium text-gray-800 uppercase mb-6">
-                    Related products
+                    {dictionary?.related_products}
                 </h2>
                 <div className="grid grid-cols-4 gap-6">
                     {firstFourProducts.map((product, index) => (
@@ -75,7 +75,7 @@ export default async function RelatedProducts({ category }) {
                                 href="#"
                                 className="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition"
                             >
-                                Add to cart
+                                {dictionary?.add_to_cart}
                             </Link>
                         </div>
                     ))}

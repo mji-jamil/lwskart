@@ -5,8 +5,8 @@ import { auth } from "@/auth";
 import Logout from "@/components/auth/Logout";
 import {dbConnect} from "@/service/mongo";
 
-export default async function Navbar() {
-    await dbConnect();
+export default async function Navbar({dictionary}) {
+    // await dbConnect();
     const session = await auth();
     return (
         <>
@@ -17,7 +17,7 @@ export default async function Navbar() {
                             <i className="fa-solid fa-bars"></i>
                         </span>
                         <span className="capitalize ml-2 text-white">
-                            All Categories
+                            {dictionary?.all_categories}
                         </span>
                         <div
                             className="absolute left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-300 invisible group-hover:visible w-[600px]"
@@ -35,7 +35,7 @@ export default async function Navbar() {
                                     height={24}
                                 />
                                 <span className="ml-6 text-gray-600 text-sm">
-                                    Electronics
+                                    {dictionary?.electronics}
                                 </span>
                             </Link>
                             <Link
@@ -50,7 +50,7 @@ export default async function Navbar() {
                                     height={24}
                                 />
                                 <span className="ml-6 text-gray-600 text-sm">
-                                    Skincare
+                                    {dictionary?.skincare}
                                 </span>
                             </Link>
                             <Link
@@ -65,7 +65,7 @@ export default async function Navbar() {
                                     width={24}
                                 />
                                 <span className="ml-6 text-gray-600 text-sm">
-                                    Furniture
+                                    {dictionary?.furniture}
                                 </span>
                             </Link>
                             <Link
@@ -80,7 +80,7 @@ export default async function Navbar() {
                                     className="w-5 h-5 object-contain"
                                 />
                                 <span className="ml-6 text-gray-600 text-sm">
-                                    Dress
+                                    {dictionary?.dresses}
                                 </span>
                             </Link>
                             <Link
@@ -95,7 +95,7 @@ export default async function Navbar() {
                                     className="w-5 h-5 object-contain"
                                 />
                                 <span className="ml-6 text-gray-600 text-sm">
-                                    Shoe
+                                    {dictionary?.shoes}
                                 </span>
                             </Link>
                             <Link
@@ -110,7 +110,7 @@ export default async function Navbar() {
                                     className="w-5 h-5 object-contain"
                                 />
                                 <span className="ml-6 text-gray-600 text-sm">
-                                    Watches
+                                    {dictionary?.watches}
                                 </span>
                             </Link>
                         </div>
@@ -122,25 +122,25 @@ export default async function Navbar() {
                                 href="/"
                                 className="text-gray-200 hover:text-white transition"
                             >
-                                Home
+                                {dictionary?.home}
                             </Link>
                             <Link
                                 href="/products"
                                 className="text-gray-200 hover:text-white transition"
                             >
-                                Shop
+                                {dictionary?.shop}
                             </Link>
                             <Link
                                 href="/about"
                                 className="text-gray-200 hover:text-white transition"
                             >
-                                About us
+                                {dictionary?.about_us}
                             </Link>
                             <Link
                                 href="/contact"
                                 className="text-gray-200 hover:text-white transition"
                             >
-                                Contact us
+                                {dictionary?.contact_us}
                             </Link>
                         </div>
                         {session?.user ? (
@@ -152,7 +152,7 @@ export default async function Navbar() {
                                     <span className="text-white"> | </span>
                                     <span className="text-gray-200 hover:text-white transition">
                                         {" "}
-                                        <Logout />
+                                        <Logout dictionary={dictionary}/>
                                     </span>
                                 </div>
                             </>
@@ -161,7 +161,7 @@ export default async function Navbar() {
                                 href="/login"
                                 className="text-gray-200 hover:text-white transition"
                             >
-                                Login
+                                {dictionary?.login}
                             </Link>
                         )}
                     </div>

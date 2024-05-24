@@ -1,9 +1,11 @@
 import Login from "@/components/auth/Login";
+import {getDictionary} from "@/app/[lang]/dictionaries";
 
-export default function LoginPage() {
+export default async function LoginPage({params: {lang}}) {
+    const dictionary = await getDictionary(lang);
     return (
         <>
-            <Login />
+            <Login dictionary={dictionary}/>
         </>
     );
 }

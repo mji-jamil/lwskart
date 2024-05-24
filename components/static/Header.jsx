@@ -1,10 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import Cart from "@/components/static/Cart";
-import WishList from "@/components/profile/WishList";
+import LanguageSwitcher from "@/components/static/LanguageSwitcher";
 
-export default function Header() {
+export default function Header({ dictionary }) {
     return (
         <>
             <header className="py-4 shadow-sm bg-white">
@@ -28,10 +27,10 @@ export default function Header() {
                             name="search"
                             id="search"
                             className="w-full border border-primary border-r-0 pl-12 py-3 pr-3 rounded-l-md focus:outline-none hidden md:flex"
-                            placeholder="search"
+                            placeholder={dictionary?.search}
                         />
                         <button className="bg-primary border border-primary text-white px-8 rounded-r-md hover:bg-transparent hover:text-primary transition hidden md:flex">
-                            Search
+                            {dictionary?.search}
                         </button>
                     </div>
 
@@ -43,7 +42,9 @@ export default function Header() {
                             <div className="text-2xl">
                                 <i className="fa-regular fa-heart"></i>
                             </div>
-                            <div className="text-xs leading-3">Wishlist</div>
+                            <div className="text-xs leading-3">
+                                {dictionary?.wishlist}
+                            </div>
                             <div className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
                                 8
                             </div>
@@ -55,7 +56,9 @@ export default function Header() {
                             <div className="text-2xl">
                                 <i className="fa-solid fa-bag-shopping"></i>
                             </div>
-                            <div className="text-xs leading-3">Cart</div>
+                            <div className="text-xs leading-3">
+                                {dictionary?.cart}
+                            </div>
                             <div className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
                                 2
                             </div>
@@ -67,8 +70,11 @@ export default function Header() {
                             <div className="text-2xl">
                                 <i className="fa-regular fa-user"></i>
                             </div>
-                            <div className="text-xs leading-3">Account</div>
+                            <div className="text-xs leading-3">
+                                {dictionary?.account}
+                            </div>
                         </Link>
+                        <LanguageSwitcher />
                     </div>
                 </div>
             </header>

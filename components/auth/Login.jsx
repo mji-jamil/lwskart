@@ -6,7 +6,7 @@ import { login } from "@/actions";
 import SocialLogin from "@/components/auth/SocialLogin";
 import Link from "next/link";
 
-export default function Login() {
+export default function Login({dictionary}) {
     const [error, setError] = useState("");
     const router = useRouter();
 
@@ -30,10 +30,10 @@ export default function Login() {
             <div className="contain py-16">
                 <div className="max-w-lg mx-auto shadow px-6 py-7 rounded overflow-hidden">
                     <h2 className="text-2xl uppercase font-medium mb-1">
-                        Login
+                        {dictionary?.login}
                     </h2>
                     <p className="text-gray-600 mb-6 text-sm">
-                        welcome back customer
+                        {dictionary?.welcome}
                     </p>
                     {error && (
                         <div className="text-xl text-red-500 text-center">
@@ -90,11 +90,11 @@ export default function Login() {
                                     htmlFor="remember"
                                     className="text-gray-600 ml-3 cursor-pointer"
                                 >
-                                    Remember me
+                                    {dictionary?.remember}
                                 </label>
                             </div>
                             <a href="#" className="text-primary">
-                                Forgot password
+                                {dictionary?.forgot}
                             </a>
                         </div>
                         <div className="mt-4">
@@ -102,23 +102,23 @@ export default function Login() {
                                 type="submit"
                                 className="block w-full py-2 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition uppercase font-roboto font-medium"
                             >
-                                Login
+                                {dictionary?.login}
                             </button>
                         </div>
                     </form>
 
                     <div className="mt-6 flex justify-center relative">
                         <div className="text-gray-600 uppercase px-3 bg-white z-10 relative">
-                            Or login with
+                            {dictionary?.or_login}
                         </div>
                         <div className="absolute left-0 top-3 w-full border-b-2 border-gray-200"></div>
                     </div>
                     <SocialLogin />
 
                     <p className="mt-4 text-center text-gray-600">
-                        Don&apos;t have account?{" "}
+                        {dictionary?.do_account}?{" "}
                         <Link href="/register" className="text-primary">
-                            Register now
+                            {dictionary?.register}
                         </Link>
                     </p>
                 </div>

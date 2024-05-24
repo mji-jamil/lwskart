@@ -3,7 +3,7 @@ import Sidebar from "@/components/products/Sidebar";
 import ProductCard from "@/components/products/ProductCard";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-export default function Products({products}) {
+export default function Products({products, dictionary}) {
     // console.log(products);
     return (
         <>
@@ -18,8 +18,8 @@ export default function Products({products}) {
             </div>
 
             <div className="container grid md:grid-cols-4 grid-cols-2 gap-6 pt-4 pb-16 items-start">
-                <Sidebar />
-                <ProductCard products={products}/>
+                <Sidebar dictionary={dictionary}/>
+                <ProductCard products={products} dictionary={dictionary}/>
             </div>
         </>
     );

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Footer() {
+export default function Footer({dictionary}) {
     return (
         <>
             <footer className="bg-white pt-16 pb-12 border-t border-gray-100">
@@ -16,34 +16,34 @@ export default function Footer() {
                         />
                         <div className="mr-2">
                             <p className="text-gray-500">
-                                LWSkart is your go-to eCommerce platform offering a wide range of products at unbeatable prices.
+                                {dictionary?.message}
                             </p>
                         </div>
                         <div className="flex space-x-5">
-                            <a
+                            <Link
                                 href="#"
                                 className="text-gray-400 hover:text-gray-500"
                             >
                                 <i className="fa-brands fa-facebook-square"></i>
-                            </a>
-                            <a
+                            </Link>
+                            <Link
                                 href="#"
                                 className="text-gray-400 hover:text-gray-500"
                             >
                                 <i className="fa-brands fa-instagram-square"></i>
-                            </a>
-                            <a
+                            </Link>
+                            <Link
                                 href="#"
                                 className="text-gray-400 hover:text-gray-500"
                             >
                                 <i className="fa-brands fa-twitter-square"></i>
-                            </a>
-                            <a
+                            </Link>
+                            <Link
                                 href="#"
                                 className="text-gray-400 hover:text-gray-500"
                             >
                                 <i className="fa-brands fa-github-square"></i>
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
@@ -51,58 +51,58 @@ export default function Footer() {
                         <div className="grid grid-cols-2 gap-4 md:gap-8">
                             <div>
                                 <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">
-                                    Solutions
+                                    {dictionary?.solutions}
                                 </h3>
                                 <div className="mt-4 space-y-4">
                                     <Link
                                         href="#"
                                         className="text-base text-gray-500 hover:text-gray-900 block"
                                     >
-                                        Marketing
+                                        {dictionary?.marketing}
                                     </Link>
                                     <Link
                                         href="#"
                                         className="text-base text-gray-500 hover:text-gray-900 block"
                                     >
-                                        Analitycs
+                                        {dictionary?.analytics}
                                     </Link>
                                     <Link
                                         href="#"
                                         className="text-base text-gray-500 hover:text-gray-900 block"
                                     >
-                                        Commerce
+                                        {dictionary?.commerce}
                                     </Link>
                                     <Link
                                         href="#"
                                         className="text-base text-gray-500 hover:text-gray-900 block"
                                     >
-                                        Insights
+                                        {dictionary?.insights}
                                     </Link>
                                 </div>
                             </div>
 
                             <div>
                                 <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">
-                                    Support
+                                    {dictionary?.support}
                                 </h3>
                                 <div className="mt-4 space-y-4">
                                     <Link
                                         href="#"
                                         className="text-base text-gray-500 hover:text-gray-900 block"
                                     >
-                                        Pricing
+                                        {dictionary?.pricing}
                                     </Link>
                                     <Link
                                         href="#"
                                         className="text-base text-gray-500 hover:text-gray-900 block"
                                     >
-                                        Guides
+                                        {dictionary?.guides}
                                     </Link>
                                     <Link
                                         href="#"
                                         className="text-base text-gray-500 hover:text-gray-900 block"
                                     >
-                                        API Status
+                                        {dictionary?.api_status}
                                     </Link>
                                 </div>
                             </div>
@@ -110,58 +110,58 @@ export default function Footer() {
                         <div className="grid grid-cols-2 gap-8">
                             <div>
                                 <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">
-                                    Solutions
+                                    {dictionary?.solutions}
                                 </h3>
                                 <div className="mt-4 space-y-4">
                                     <Link
                                         href="#"
                                         className="text-base text-gray-500 hover:text-gray-900 block"
                                     >
-                                        Marketing
+                                        {dictionary?.marketing}
                                     </Link>
                                     <Link
                                         href="#"
                                         className="text-base text-gray-500 hover:text-gray-900 block"
                                     >
-                                        Analitycs
+                                        {dictionary?.analytics}
                                     </Link>
                                     <Link
                                         href="#"
                                         className="text-base text-gray-500 hover:text-gray-900 block"
                                     >
-                                        Commerce
+                                        {dictionary?.commerce}
                                     </Link>
                                     <Link
                                         href="#"
                                         className="text-base text-gray-500 hover:text-gray-900 block"
                                     >
-                                        Insights
+                                        {dictionary?.insights}
                                     </Link>
                                 </div>
                             </div>
 
                             <div>
                                 <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">
-                                    Support
+                                    {dictionary?.support}
                                 </h3>
                                 <div className="mt-4 space-y-4">
                                     <Link
                                         href="#"
                                         className="text-base text-gray-500 hover:text-gray-900 block"
                                     >
-                                        Pricing
+                                        {dictionary?.pricing}
                                     </Link>
                                     <Link
                                         href="#"
                                         className="text-base text-gray-500 hover:text-gray-900 block"
                                     >
-                                        Guides
+                                        {dictionary?.guides}
                                     </Link>
                                     <Link
                                         href="#"
                                         className="text-base text-gray-500 hover:text-gray-900 block"
                                     >
-                                        API Status
+                                        {dictionary?.api_status}
                                     </Link>
                                 </div>
                             </div>

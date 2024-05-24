@@ -3,7 +3,7 @@ import Link from "next/link";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import RelatedProducts from "@/components/products/RelatedProducts";
 
-export default function SingleProduct({ product }) {
+export default function SingleProduct({ product, dictionary }) {
     return (
         <>
             <div className="container py-4 flex items-center gap-3">
@@ -13,7 +13,7 @@ export default function SingleProduct({ product }) {
                 <span className="text-sm text-gray-400">
                     <i className="fa-solid fa-chevron-right"></i>
                 </span>
-                <p className="text-gray-600 font-medium">Product</p>
+                <p className="text-gray-600 font-medium">{dictionary?.product}</p>
             </div>
             <div className="container grid grid-cols-2 gap-6 mb-8">
                 <div className="h-100">
@@ -63,21 +63,21 @@ export default function SingleProduct({ product }) {
                     <div className="space-y-2">
                         <p className="text-gray-800 font-semibold space-x-2">
                             <span>
-                                Availability:{" "}
+                                {dictionary?.availability}:{" "}
                                 {product?.stock > 0 ? (
                                     <span className="text-green-600">
-                                        In Stock
+                                        {dictionary?.in_stock}
                                     </span>
                                 ) : (
                                     <span className="text-red-600">
-                                        Sold Out
+                                        {dictionary?.out_stock}
                                     </span>
                                 )}
                             </span>
                         </p>
                         <p className="space-x-2">
                             <span className="text-gray-800 font-semibold">
-                                Brand:{" "}
+                                {dictionary?.brand}:{" "}
                             </span>
                             <span className="text-gray-600">
                                 {product?.brand}
@@ -85,7 +85,7 @@ export default function SingleProduct({ product }) {
                         </p>
                         <p className="space-x-2">
                             <span className="text-gray-800 font-semibold">
-                                Category:{" "}
+                                {dictionary?.category}:{" "}
                             </span>
                             <span className="text-gray-600">
                                 {product?.category}
@@ -110,7 +110,7 @@ export default function SingleProduct({ product }) {
 
                     <div className="mt-4">
                         <h3 className="text-sm text-gray-800 uppercase mb-1">
-                            Quantity
+                            {dictionary?.quantity}
                         </h3>
                         <div className="flex border border-gray-300 text-gray-600 divide-x divide-gray-300 w-max">
                             <div className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">
@@ -130,14 +130,13 @@ export default function SingleProduct({ product }) {
                             href="#"
                             className="bg-primary border border-primary text-white px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:bg-transparent hover:text-primary transition"
                         >
-                            <i className="fa-solid fa-bag-shopping"></i> Add to
-                            cart
+                            <i className="fa-solid fa-bag-shopping"></i> {dictionary?.add_to_cart}
                         </a>
                         <a
                             href="#"
                             className="border border-gray-300 text-gray-600 px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:text-primary transition"
                         >
-                            <i className="fa-solid fa-heart"></i> Wishlist
+                            <i className="fa-solid fa-heart"></i> {dictionary?.wishlist}
                         </a>
                     </div>
 
@@ -165,7 +164,7 @@ export default function SingleProduct({ product }) {
             </div>
             <hr />
             <div className="mt-8">
-                <RelatedProducts category={product?.category} />
+                <RelatedProducts category={product?.category} dictionary={dictionary} />
             </div>
         </>
     );

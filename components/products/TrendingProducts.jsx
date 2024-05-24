@@ -18,8 +18,7 @@ export default function TrendingProducts({ trending,dictionary }) {
                                         src={product.thumbnail}
                                         alt={product.title || 'Product Image'}
                                         fill
-                                        objectFit="cover"
-                                        className="w-full"
+                                        className="w-full object-cover"
                                     />
                                     <div
                                         className="absolute inset-0 bg-black bg-opacity-40 flex items-center

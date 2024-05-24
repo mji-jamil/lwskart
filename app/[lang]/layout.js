@@ -1,10 +1,11 @@
 import { Poppins, Roboto } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Navbar from "@/components/static/Navbar";
 import Header from "@/components/static/Header";
 import Footer from "@/components/static/Footer";
 import Copyright from "@/components/static/Copyright";
-import {dbConnect} from "@/service/mongo";
+import { dbConnect } from "@/service/mongo";
+import { getDictionary } from "@/app/[lang]/dictionaries";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -23,17 +24,18 @@ export const metadata = {
         "LWSkart is your go-to eCommerce platform offering a wide range of products at unbeatable prices.",
 };
 
-export default async function RootLayout({ children }) {
+export default async function RootLayout({ children, params: { lang } }) {
     await dbConnect();
-
+    const dictionary = await getDictionary(lang);
     return (
         <html lang="en">
             <body className={`${poppins.variable} ${roboto.variable}`}>
-                <Header />
-                <Navbar />
-                {children}
-                <Footer />
-                <Copyright />
+                    <Header dictionary={dictionary} />
+                    <Navbar dictionary={dictionary} />
+                    {children}
+                    <Footer dictionary={dictionary} />
+                    <Copyright dictionary={dictionary} />
+
             </body>
         </html>
     );

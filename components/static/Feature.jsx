@@ -18,7 +18,7 @@ export default function Feature({dictionary}) {
                                 {dictionary.free_shipping}
                             </h4>
                             <p className="text-gray-500 text-sm">
-                                Order over $200
+                                {dictionary?.order_over_200}
                             </p>
                         </div>
                     </div>
