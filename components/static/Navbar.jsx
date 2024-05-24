@@ -3,10 +3,8 @@ import Link from "next/link";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { auth } from "@/auth";
 import Logout from "@/components/auth/Logout";
-import {dbConnect} from "@/service/mongo";
 
-export default async function Navbar({dictionary}) {
-    // await dbConnect();
+export default async function Navbar({ dictionary }) {
     const session = await auth();
     return (
         <>
@@ -152,7 +150,7 @@ export default async function Navbar({dictionary}) {
                                     <span className="text-white"> | </span>
                                     <span className="text-gray-200 hover:text-white transition">
                                         {" "}
-                                        <Logout dictionary={dictionary}/>
+                                        <Logout dictionary={dictionary} />
                                     </span>
                                 </div>
                             </>

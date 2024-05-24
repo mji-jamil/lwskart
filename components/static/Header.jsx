@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import LanguageSwitcher from "@/components/static/LanguageSwitcher";
+import Search from "@/components/Search";
 
 export default function Header({ dictionary }) {
     return (
@@ -18,21 +19,7 @@ export default function Header({ dictionary }) {
                         />
                     </Link>
 
-                    <div className="w-full max-w-xl relative flex">
-                        <span className="absolute left-4 top-3 text-lg text-gray-400">
-                            <i className="fa-solid fa-magnifying-glass"></i>
-                        </span>
-                        <input
-                            type="text"
-                            name="search"
-                            id="search"
-                            className="w-full border border-primary border-r-0 pl-12 py-3 pr-3 rounded-l-md focus:outline-none hidden md:flex"
-                            placeholder={dictionary?.search}
-                        />
-                        <button className="bg-primary border border-primary text-white px-8 rounded-r-md hover:bg-transparent hover:text-primary transition hidden md:flex">
-                            {dictionary?.search}
-                        </button>
-                    </div>
+                    <Search dictionary={dictionary}/>
 
                     <div className="flex items-center space-x-4">
                         <Link

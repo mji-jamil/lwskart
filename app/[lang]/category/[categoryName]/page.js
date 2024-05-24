@@ -7,5 +7,4 @@ export default async function CategoryPage({params}){
     return(
         <><Products products={products}/></>
     )
-
 }

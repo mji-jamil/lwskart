@@ -1,9 +1,11 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import RelatedProducts from "@/components/products/RelatedProducts";
 
 export default function SingleProduct({ product, dictionary }) {
+
     return (
         <>
             <div className="container py-4 flex items-center gap-3">
@@ -113,13 +115,13 @@ export default function SingleProduct({ product, dictionary }) {
                             {dictionary?.quantity}
                         </h3>
                         <div className="flex border border-gray-300 text-gray-600 divide-x divide-gray-300 w-max">
-                            <div className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">
+                            <div className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none" >
                                 -
                             </div>
                             <div className="h-8 w-8 text-base flex items-center justify-center">
                                 4
                             </div>
-                            <div className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">
+                            <div className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none" >
                                 +
                             </div>
                         </div>

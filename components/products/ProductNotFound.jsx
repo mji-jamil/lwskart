@@ -1,12 +1,8 @@
 import Link from "next/link";
 import Sidebar from "@/components/products/Sidebar";
 import ProductCard from "@/components/products/ProductCard";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import {getAllCategories} from "@/database/queries";
 
-export default async function Products({products, dictionary}) {
-    // const categories = await getAllCategories();
-    // console.log(products);
+export default function ProductNotFound({dictionary}) {
     return (
         <>
             <div className="container py-4 flex items-center gap-3">
@@ -18,10 +14,17 @@ export default async function Products({products, dictionary}) {
                 </span>
                 <p className="text-gray-600 font-medium">Shop</p>
             </div>
-
             <div className="container grid md:grid-cols-4 grid-cols-2 gap-6 pt-4 pb-16 items-start">
-                <Sidebar dictionary={dictionary} />
-                <ProductCard products={products} dictionary={dictionary}/>
+                <Sidebar dictionary={dictionary}/>
+                <div className="md:col-span-3 col-span-2 flex flex-col items-center justify-center text-center">
+                    <i className="fa-solid fa-box-open text-6xl text-gray-300 mb-4"></i>
+                    <h2 className="text-2xl font-semibold text-gray-700 mb-2">
+                        Product not found
+                    </h2>
+                    <p className="text-gray-500 mb-4">
+                        The product you are searching for was not found. Try searching for another product.
+                    </p>
+                </div>
             </div>
         </>
     );

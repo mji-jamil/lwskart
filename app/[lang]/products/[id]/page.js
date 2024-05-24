@@ -32,6 +32,7 @@ export default async function Page({ params }) {
     const id = params.id;
     const lang = params.lang;
     let product = await getProductById(id);
+
     const dictionary = await getDictionary(lang);
 
     return (
