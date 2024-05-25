@@ -1,8 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import AddToCart from "@/components/buttons/AddToCart";
+import {auth} from "@/auth";
+import {getUserData} from "@/database/queries";
+import WishListButton from "@/components/buttons/WishListButton";
 
-export default function NewArrival({ newArrival, dictionary }) {
+export default async function NewArrival({ newArrival, dictionary }) {
+    const session = await auth();
+    const userData = await getUserData(session?.user?.email);
+    // console.log(userData);
+    console.log("Rendering NewArrival component");
     return (
         <div className="container pb-16">
             <h2 className="text-2xl font-bold text-gray-800 uppercase mb-6">
@@ -31,13 +39,7 @@ export default function NewArrival({ newArrival, dictionary }) {
                                         >
                                             <i className="fa-solid fa-magnifying-glass"></i>
                                         </Link>
-                                        <Link
-                                            href="#"
-                                            className="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-                                            title="Add to Wishlist"
-                                        >
-                                            <i className="fa-solid fa-heart"></i>
-                                        </Link>
+                                        <WishListButton dictionary={dictionary} productId={product?._id.toString()} userId={userData?._id.toString()} session={session}/>
                                     </div>
                                 </div>
                                 <div className="pt-4 pb-3 px-4">
@@ -69,12 +71,7 @@ export default function NewArrival({ newArrival, dictionary }) {
                                         </div>
                                     </div>
                                 </div>
-                                <Link
-                                    href="/addToCard"
-                                    className="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition"
-                                >
-                                    {dictionary?.add_to_cart}
-                                </Link>
+                                <AddToCart dictionary={dictionary} productId={product?._id.toString()} userId={userData?._id.toString()} session={session}/>
                             </div>
                         );
                     })

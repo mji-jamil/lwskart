@@ -1,27 +1,20 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import Link from "next/link";
 import Image from "next/image";
+import AddToCart from "@/components/buttons/AddToCart";
+import Delete from "@/components/buttons/Delete";
 
-export default function WishList() {
+
+export default async function WishList({ product, dictionary, userId }) {
+
     return (
         <>
-            <div className="container py-4 flex items-center gap-3">
-                <Link href="/" className="text-primary text-base">
-                    <i className="fa-solid fa-house"></i>
-                </Link>
-                <span className="text-sm text-gray-400">
-                    <i className="fa-solid fa-chevron-right"></i>
-                </span>
-                <p className="text-gray-600 font-medium">Profile</p>
-            </div>
-
             <div className="container gap-6 pt-4 pb-16">
                 <div className="mx-auto space-y-4 max-w-6xl">
                     <div className="flex items-center justify-between border gap-6 p-4 border-gray-200 rounded">
                         <div className="w-28">
                             <Image
-                                src="/products/product6.jpg"
-                                alt="product 6"
+                                src={product?.thumbnail}
+                                alt={product?.title}
                                 className="w-full"
                                 width={120}
                                 height={120}
@@ -29,26 +22,41 @@ export default function WishList() {
                         </div>
                         <div className="w-1/3">
                             <h2 className="text-gray-800 text-xl font-medium uppercase">
-                                Italian L shape
+                                {product?.title}
                             </h2>
                             <p className="text-gray-500 text-sm">
                                 Availability:{" "}
-                                <span className="text-green-600">In Stock</span>
+                                {product?.stock > 0 ? (
+                                    <span className="text-green-600">
+                                        {dictionary?.in_stock}
+                                    </span>
+                                ) : (
+                                    <span className="text-red-600">
+                                        {dictionary?.out_stock}
+                                    </span>
+                                )}
                             </p>
                         </div>
                         <div className="text-primary text-lg font-semibold">
-                            $320.00
+                            $
+                            {(
+                                product?.price -
+                                (product?.price * product?.discountPercentage) /
+                                100
+                            ).toFixed(2)}
                         </div>
-                        <a
-                            href="#"
-                            className="px-6 py-2 text-center text-sm text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition uppercase font-roboto font-medium"
-                        >
-                            add to cart
-                        </a>
 
-                        <div className="text-gray-600 cursor-pointer hover:text-primary">
-                            <i className="fa-solid fa-trash"></i>
+                        <div className="max-w-xs mx-auto p-3">
+
+                            <AddToCart
+                                dictionary={dictionary}
+                                productId={product?._id.toString()}
+                                userId={userId.toString()}
+                                className="w-full"
+                                disabled={!(product?.stock > 0)}
+                            />
                         </div>
+                        <Delete productId={product?._id.toString()} userId={userId.toString()} />
                     </div>
                 </div>
             </div>

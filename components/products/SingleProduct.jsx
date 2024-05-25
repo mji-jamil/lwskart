@@ -3,8 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import RelatedProducts from "@/components/products/RelatedProducts";
+import AddToCartIncDec from "@/components/buttons/AddToCartIncDec";
+import {auth} from "@/auth";
+import {getUserData} from "@/database/queries";
 
-export default function SingleProduct({ product, dictionary }) {
+export default async function SingleProduct({ product, dictionary }) {
+    const session = await auth();
+    const userData = await getUserData(session?.user?.email);
 
     return (
         <>
@@ -110,37 +115,7 @@ export default function SingleProduct({ product, dictionary }) {
 
                     <p className="mt-4 text-gray-600">{product?.description}</p>
 
-                    <div className="mt-4">
-                        <h3 className="text-sm text-gray-800 uppercase mb-1">
-                            {dictionary?.quantity}
-                        </h3>
-                        <div className="flex border border-gray-300 text-gray-600 divide-x divide-gray-300 w-max">
-                            <div className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none" >
-                                -
-                            </div>
-                            <div className="h-8 w-8 text-base flex items-center justify-center">
-                                4
-                            </div>
-                            <div className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none" >
-                                +
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mt-6 flex gap-3 border-b border-gray-200 pb-5 pt-5">
-                        <a
-                            href="#"
-                            className="bg-primary border border-primary text-white px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:bg-transparent hover:text-primary transition"
-                        >
-                            <i className="fa-solid fa-bag-shopping"></i> {dictionary?.add_to_cart}
-                        </a>
-                        <a
-                            href="#"
-                            className="border border-gray-300 text-gray-600 px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:text-primary transition"
-                        >
-                            <i className="fa-solid fa-heart"></i> {dictionary?.wishlist}
-                        </a>
-                    </div>
+                    <AddToCartIncDec dictionary={dictionary} productId={product?._id.toString()} userId={userData?._id.toString()}/>
 
                     <div className="flex gap-3 mt-4">
                         <a

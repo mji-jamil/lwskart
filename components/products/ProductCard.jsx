@@ -1,8 +1,14 @@
 import Image from "next/image";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Link from "next/link";
+import AddToCart from "@/components/buttons/AddToCart";
+import {auth} from "@/auth";
+import {getUserData} from "@/database/queries";
+import WishListButton from "@/components/buttons/WishListButton";
 
-export default function ProductCard({ products }) {
+export default async function ProductCard({ products, dictionary }) {
+    const session = await auth();
+    const userData = await getUserData(session?.user?.email);
     return (
         <>
             {products.map((product) => (
@@ -25,13 +31,7 @@ export default function ProductCard({ products }) {
                             >
                                 <i className="fa-solid fa-magnifying-glass"></i>
                             </a>
-                            <Link
-                                href="#"
-                                className="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-                                title="add to wishlist"
-                            >
-                                <i className="fa-solid fa-heart"></i>
-                            </Link>
+                            <WishListButton productId={product?._id.toString()} userId={userData?._id.toString()} session={session}/>
                         </div>
                     </div>
                     <div className="pt-4 pb-3 px-4">
@@ -69,12 +69,7 @@ export default function ProductCard({ products }) {
                             </div>
                         </div>
                     </div>
-                    <a
-                        href="#"
-                        className="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition"
-                    >
-                        Add to cart
-                    </a>
+                    <AddToCart dictionary={dictionary} productId={product?._id.toString()} userId={userData?._id.toString()} session={session}/>
                 </div>
             ))}
         </>
