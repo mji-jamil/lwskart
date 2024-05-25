@@ -7,7 +7,7 @@ export default function UpdateProfile({ user }) {
     const [formData, setFormData] = useState({
         name: user?.name || "",
         email: user?.email || "",
-        password: user?.password || "",
+        // password: user?.password || "",
         phoneNumber: user?.phoneNumber || "",
     });
     const [error, setError] = useState("");
@@ -91,20 +91,20 @@ export default function UpdateProfile({ user }) {
                                 placeholder="+880**-********"
                             />
                         </div>
-                        <div>
-                            <label htmlFor="password" className="text-gray-600 mb-2 block">
-                                Password
-                            </label>
-                            <input
-                                type="password"
-                                name="password"
-                                id="password"
-                                value={formData?.password}
-                                onChange={handleChange}
-                                className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
-                                placeholder="*******"
-                            />
-                        </div>
+                        {/*<div>*/}
+                        {/*    <label htmlFor="password" className="text-gray-600 mb-2 block">*/}
+                        {/*        Password*/}
+                        {/*    </label>*/}
+                        {/*    <input*/}
+                        {/*        type="password"*/}
+                        {/*        name="password"*/}
+                        {/*        id="password"*/}
+                        {/*        value={formData?.password}*/}
+                        {/*        onChange={handleChange}*/}
+                        {/*        className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"*/}
+                        {/*        placeholder="*******"*/}
+                        {/*    />*/}
+                        {/*</div>*/}
                     </div>
                     <div className="mt-4">
                         <button

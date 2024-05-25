@@ -41,12 +41,10 @@ export const {
                     });
 
                     if (user) {
-                        // const isMatch = await bcrypt.compare(
-                        //     credentials.password,
-                        //     user.password,
-                        // );
-                        const isMatch =
-                            (await credentials.password) === user.password;
+                        const isMatch = await bcrypt.compare(
+                            credentials.password,
+                            user.password,
+                        );
                         if (isMatch) {
                             return user;
                         } else {

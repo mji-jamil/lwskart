@@ -1,4 +1,39 @@
+"use client";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import Link from "next/link";
+import SocialLogin from "@/components/auth/SocialLogin";
+
 export default function Register() {
+    const [error, setError] = useState("");
+    const router = useRouter();
+
+    async function onSubmit(event) {
+        event.preventDefault();
+        try {
+            const formData = new FormData(event.currentTarget);
+            const name = formData.get("name");
+            const email = formData.get("email");
+            const password = formData.get("password");
+            const confirm = formData.get("confirm");
+            const res = await fetch("/api/auth/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    password,
+                    confirm,
+                }),
+            });
+            res.status === 201 && router.push("/login");
+        } catch (error) {
+            setError(error.message);
+        }
+    }
+
     return (
         <>
             <div className="contain py-16">
@@ -7,9 +42,17 @@ export default function Register() {
                         Create an account
                     </h2>
                     <p className="text-gray-600 mb-6 text-sm">
-                        Register for new cosutumer
+                        Register for new customer
                     </p>
-                    <form action="#" method="post" autoComplete="off">
+                    <div className="text-xl text-red-500 text-center">
+                        {error && error}
+                    </div>
+                    <form
+                        action="#"
+                        method="post"
+                        autoComplete="off"
+                        onSubmit={onSubmit}
+                    >
                         <div className="space-y-2">
                             <div>
                                 <label
@@ -72,25 +115,25 @@ export default function Register() {
                                 />
                             </div>
                         </div>
-                        <div className="mt-6">
-                            <div className="flex items-center">
-                                <input
-                                    type="checkbox"
-                                    name="aggrement"
-                                    id="aggrement"
-                                    className="text-primary focus:ring-0 rounded-sm cursor-pointer"
-                                />
-                                <label
-                                    htmlFor="aggrement"
-                                    className="text-gray-600 ml-3 cursor-pointer"
-                                >
-                                    I have read and agree to the{" "}
-                                    <a href="#" className="text-primary">
-                                        terms & conditions
-                                    </a>
-                                </label>
-                            </div>
-                        </div>
+                        {/*<div className="mt-6">*/}
+                        {/*    <div className="flex items-center">*/}
+                        {/*        <input*/}
+                        {/*            type="checkbox"*/}
+                        {/*            name="aggrement"*/}
+                        {/*            id="aggrement"*/}
+                        {/*            className="text-primary focus:ring-0 rounded-sm cursor-pointer"*/}
+                        {/*        />*/}
+                        {/*        <label*/}
+                        {/*            htmlFor="aggrement"*/}
+                        {/*            className="text-gray-600 ml-3 cursor-pointer"*/}
+                        {/*        >*/}
+                        {/*            I have read and agree to the{" "}*/}
+                        {/*            <a href="#" className="text-primary">*/}
+                        {/*                terms & conditions*/}
+                        {/*            </a>*/}
+                        {/*        </label>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
                         <div className="mt-4">
                             <button
                                 type="submit"
@@ -107,26 +150,13 @@ export default function Register() {
                         </div>
                         <div className="absolute left-0 top-3 w-full border-b-2 border-gray-200"></div>
                     </div>
-                    <div className="mt-4 flex gap-4">
-                        <a
-                            href="#"
-                            className="w-1/2 py-2 text-center text-white bg-blue-800 rounded uppercase font-roboto font-medium text-sm hover:bg-blue-700"
-                        >
-                            facebook
-                        </a>
-                        <a
-                            href="#"
-                            className="w-1/2 py-2 text-center text-white bg-red-600 rounded uppercase font-roboto font-medium text-sm hover:bg-red-500"
-                        >
-                            google
-                        </a>
-                    </div>
+                    <SocialLogin />
 
                     <p className="mt-4 text-center text-gray-600">
                         Already have account?{" "}
-                        <a href="login.html" className="text-primary">
+                        <Link href="/login" className="text-primary">
                             Login now
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>

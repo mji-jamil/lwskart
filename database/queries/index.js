@@ -6,17 +6,17 @@ import { productModel } from "@/models/product-model";
 
 export async function updateData(formData) {
     await dbConnect();
-    const { email, name, password, phoneNumber } = formData;
+    const { email, name, phoneNumber } = formData;
     try {
         const updateFields = {
             name,
             email,
             phoneNumber,
-            password,
+
         };
-        if (password) {
-            updateFields.password = password;
-        }
+        // if (password) {
+        //     updateFields.password = password;
+        // }
 
         const user = await userModel.findOneAndUpdate(
             { email: email },
