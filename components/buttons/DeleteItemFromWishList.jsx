@@ -2,8 +2,11 @@
 import { useRouter } from "next/navigation";
 
 
-export default function DeleteItemFromWishList({ productId, userId }) {
+export default function DeleteItemFromWishList({ productId, userId, onDelete }) {
     const router = useRouter();
+    function onReload() {
+        window.location.href="/wishlist"
+    }
     const deleteItem = async () => {
         if (window.confirm("Are you sure you want to delete this item?")) {
             try {
@@ -16,10 +19,9 @@ export default function DeleteItemFromWishList({ productId, userId }) {
                 });
 
                 if (response.ok) {
-                    setTimeout(() => {
-                        router.push("/wishlist")
-                    }, 4000)
-
+                    onDelete(productId)
+                    onReload()
+                    // router.push("/wishlist")
                 } else {
                     const data = await response.json();
                     console.error("Failed to delete item:", data.error);

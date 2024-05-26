@@ -2,13 +2,14 @@ import WishList from "@/components/profile/WishList";
 import { auth } from "@/auth";
 import { getProductById, getUserData } from "@/database/queries";
 import Link from "next/link";
-import {getDictionary} from "@/app/[lang]/dictionaries";
+import { getDictionary } from "@/app/[lang]/dictionaries";
+import DeleteItemFromWishList from "@/components/buttons/DeleteItemFromWishList";
 
-export default async function Page({params: {lang}}) {
+export default async function Page({ params: { lang } }) {
     const dictionary = await getDictionary(lang);
     const session = await auth();
     const userData = await getUserData(session?.user?.email);
-    const userId = userData?._id;
+    const userId = userData?._id.toString();
 
     let wishListProducts = [];
     if (userData?.wishlist.length > 0) {
@@ -18,6 +19,7 @@ export default async function Page({params: {lang}}) {
             }),
         );
     }
+
 
     return (
         <>
@@ -32,14 +34,18 @@ export default async function Page({params: {lang}}) {
                     <p className="text-gray-600 font-medium">Shop</p>
                 </Link>
             </div>
-            {wishListProducts.map((product, id) => (
-                <WishList
-                    product={product}
-                    key={id}
-                    dictionary={dictionary}
-                    userId={userId}
-                />
-            ))}
+            <WishList wishListProducts={wishListProducts} dictionary={dictionary} userId={userId}/>
+            {/*{wishListProducts.map((product, id) => (*/}
+            {/*    <>*/}
+            {/*        <WishList*/}
+            {/*            product={product}*/}
+            {/*            key={id}*/}
+            {/*            dictionary={dictionary}*/}
+            {/*            userId={userId}*/}
+            {/*            wishListProducts={wishListProducts}*/}
+            {/*        />*/}
+            {/*    </>*/}
+            {/*))}*/}
         </>
     );
 }

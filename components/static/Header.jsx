@@ -1,15 +1,24 @@
+"use client"
 import Link from "next/link";
 import Image from "next/image";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import LanguageSwitcher from "@/components/static/LanguageSwitcher";
 import Search from "@/components/Search";
 
-export default function Header({ dictionary }) {
+export default function Header({ dictionary, wishListCount, cartCount }) {
+    function onClickWishList() {
+        window.location.href = "/wishlist"
+    }
+
+    function onClickHomePage() {
+        window.location.href="/"
+    }
+
     return (
         <>
             <header className="py-4 shadow-sm bg-white">
                 <div className="container flex items-center justify-between">
-                    <Link href="/">
+                    <Link href="/" onClick={onClickHomePage}>
                         <Image
                             src="/logo.svg"
                             alt="Logo"
@@ -25,6 +34,7 @@ export default function Header({ dictionary }) {
                         <Link
                             href="/wishlist"
                             className="text-center text-gray-700 hover:text-primary transition relative"
+                            onClick={onClickWishList}
                         >
                             <div className="text-2xl">
                                 <i className="fa-regular fa-heart"></i>
@@ -33,7 +43,7 @@ export default function Header({ dictionary }) {
                                 {dictionary?.wishlist}
                             </div>
                             <div className="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
-                                8
+                                {wishListCount}
                             </div>
                         </Link>
                         <Link
@@ -47,7 +57,7 @@ export default function Header({ dictionary }) {
                                 {dictionary?.cart}
                             </div>
                             <div className="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
-                                2
+                                {cartCount}
                             </div>
                         </Link>
                         <Link
