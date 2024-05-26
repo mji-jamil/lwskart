@@ -31,9 +31,13 @@ export default async function RootLayout({ children, params: { lang } }) {
     await dbConnect();
     const dictionary = await getDictionary(lang);
     const session = await auth();
-    const userData = await getUserData(session?.user?.email)
-    const wishListCount = userData?.wishlist.length;
-    const cartCount = userData?.cart.length
+    let wishListCount = "";
+    let cartCount = "";
+    if(session) {
+        const userData = await getUserData(session?.user?.email)
+        wishListCount = userData?.wishlist.length;
+        cartCount = userData?.cart.length
+    }
 
     return (
         <html lang="en">

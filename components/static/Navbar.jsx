@@ -1,11 +1,14 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { auth } from "@/auth";
 import Logout from "@/components/auth/Logout";
+import ProductNav from "@/components/static/ProductNav";
 
 export default async function Navbar({ dictionary }) {
     const session = await auth();
+
     return (
         <>
             <nav className="bg-gray-800">
@@ -122,12 +125,7 @@ export default async function Navbar({ dictionary }) {
                             >
                                 {dictionary?.home}
                             </Link>
-                            <Link
-                                href="/products"
-                                className="text-gray-200 hover:text-white transition"
-                            >
-                                {dictionary?.shop}
-                            </Link>
+                            <ProductNav dictionary={dictionary}/>
                             <Link
                                 href="/about"
                                 className="text-gray-200 hover:text-white transition"

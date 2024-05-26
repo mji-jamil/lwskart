@@ -12,17 +12,18 @@ export default function Login({dictionary}) {
 
     async function onSubmit(e) {
         e.preventDefault();
+        setError("");
         try {
             const formData = new FormData(e.currentTarget);
 
             const response = await login(formData);
             if (!!response.error) {
-                setError(response.error.message);
+                setError("Email or password mismatch");
             } else {
                 router.push("/account");
             }
         } catch (error) {
-            setError(error.message);
+            setError("An unexpected error occurred");
         }
     }
     return (
@@ -60,6 +61,7 @@ export default function Login({dictionary}) {
                                     id="email"
                                     className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
                                     placeholder="youremail.@domain.com"
+                                    required
                                 />
                             </div>
                             <div>
@@ -75,6 +77,7 @@ export default function Login({dictionary}) {
                                     id="password"
                                     className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
                                     placeholder="*******"
+                                    required
                                 />
                             </div>
                         </div>

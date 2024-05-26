@@ -66,7 +66,8 @@ export default function Register() {
                                     name="name"
                                     id="name"
                                     className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
-                                    placeholder="fulan fulana"
+                                    placeholder="John Doe"
+                                    required
                                 />
                             </div>
                             <div>
@@ -82,6 +83,7 @@ export default function Register() {
                                     id="email"
                                     className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
                                     placeholder="youremail.@domain.com"
+                                    required
                                 />
                             </div>
                             <div>
@@ -97,6 +99,7 @@ export default function Register() {
                                     id="password"
                                     className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
                                     placeholder="*******"
+                                    required
                                 />
                             </div>
                             <div>
@@ -112,6 +115,7 @@ export default function Register() {
                                     id="confirm"
                                     className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
                                     placeholder="*******"
+                                    required
                                 />
                             </div>
                         </div>

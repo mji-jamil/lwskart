@@ -84,7 +84,7 @@ export default function WishList({ dictionary, userId, wishListProducts }) {
                                 Try adding some products to wishlist.
                             </p>
                             <p>
-                                <Link href={"/products"} className="text-red-600">Visit Shop</Link>
+                                <Link href={"/products"} className="text-red-600 text-lg font-medium hover:underline">VISIT SHOP</Link>
                             </p>
                         </div>}
                 </div>
