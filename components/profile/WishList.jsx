@@ -1,7 +1,7 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Image from "next/image";
 import AddToCart from "@/components/buttons/AddToCart";
-import Delete from "@/components/buttons/Delete";
+import DeleteItemFromWishList from "@/components/buttons/DeleteItemFromWishList";
 
 
 export default async function WishList({ product, dictionary, userId }) {
@@ -56,7 +56,7 @@ export default async function WishList({ product, dictionary, userId }) {
                                 disabled={!(product?.stock > 0)}
                             />
                         </div>
-                        <Delete productId={product?._id.toString()} userId={userId.toString()} />
+                        <DeleteItemFromWishList productId={product?._id.toString()} userId={userId.toString()} />
                     </div>
                 </div>
             </div>

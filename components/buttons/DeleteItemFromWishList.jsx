@@ -2,12 +2,12 @@
 import { useRouter } from "next/navigation";
 
 
-export default function Delete({ productId, userId }) {
+export default function DeleteItemFromWishList({ productId, userId }) {
     const router = useRouter();
     const deleteItem = async () => {
         if (window.confirm("Are you sure you want to delete this item?")) {
             try {
-                const response = await fetch("/api/deleteItem", {
+                const response = await fetch("/api/deleteItemFromWishlist", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -16,7 +16,10 @@ export default function Delete({ productId, userId }) {
                 });
 
                 if (response.ok) {
-                    router.push("/products")
+                    setTimeout(() => {
+                        router.push("/wishlist")
+                    }, 4000)
+
                 } else {
                     const data = await response.json();
                     console.error("Failed to delete item:", data.error);
