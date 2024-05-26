@@ -1,10 +1,11 @@
-"use client"
+"use client";
 import Link from "next/link";
 
-export default function ProductNav({dictionary}) {
+export default function ProductNav({ dictionary }) {
     function onClickShop() {
         window.location.href = "/products";
     }
+
     return (
         <>
             <Link

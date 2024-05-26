@@ -7,7 +7,6 @@ export const POST = async (req) => {
     const { userId, productId } = await req.json();
 
     try {
-        await dbConnect()
         const user = await userModel.findById(userId);
 
         if (!user) {
@@ -15,7 +14,7 @@ export const POST = async (req) => {
         }
 
         const isProductInWishlist = user.wishlist.some(
-            (item) => item.toString() === productId
+            (item) => item.toString() === productId,
         );
 
         if (isProductInWishlist) {
@@ -32,5 +31,4 @@ export const POST = async (req) => {
     } catch (error) {
         return new NextResponse(error.message, { status: 500 });
     }
-
 };

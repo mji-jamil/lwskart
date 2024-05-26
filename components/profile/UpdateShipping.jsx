@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import {updateData, updateShippingData} from "@/database/queries";
+import { updateShippingData } from "@/database/queries";
 
 export default function UpdateShipping({ user }) {
     const [formData, setFormData] = useState({
@@ -31,7 +31,7 @@ export default function UpdateShipping({ user }) {
                 address: formData.shippingAddress,
                 postCode: formData.postCode,
                 phoneNumber: formData.phoneNumber,
-            }
+            },
         };
 
         try {
@@ -45,7 +45,6 @@ export default function UpdateShipping({ user }) {
             setError(err.message);
         }
     };
-
 
     return (
         <div className="contain py-16">

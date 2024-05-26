@@ -51,8 +51,10 @@ const LanguageSwitcher = () => {
                     {selectedLanguage.language}
                 </button>
                 {showManu && (
-                    <div className="absolute right-0 top-full mt-2 w-40 rounded-md bg-white p-2 z-10 shadow-lg border border-gray-200
-">
+                    <div
+                        className="absolute right-0 top-full mt-2 w-40 rounded-md bg-white p-2 z-10 shadow-lg border border-gray-200
+"
+                    >
                         {languages.map((entry) => (
                             <li
                                 key={entry.code}

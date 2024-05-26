@@ -3,7 +3,6 @@ import { auth } from "@/auth";
 import { getProductById, getUserData } from "@/database/queries";
 import Link from "next/link";
 import { getDictionary } from "@/app/[lang]/dictionaries";
-import DeleteItemFromWishList from "@/components/buttons/DeleteItemFromWishList";
 
 export default async function Page({ params: { lang } }) {
     const dictionary = await getDictionary(lang);
@@ -20,7 +19,6 @@ export default async function Page({ params: { lang } }) {
         );
     }
 
-
     return (
         <>
             <div className="container py-4 flex items-center gap-3">
@@ -34,18 +32,11 @@ export default async function Page({ params: { lang } }) {
                     <p className="text-gray-600 font-medium">Shop</p>
                 </Link>
             </div>
-            <WishList wishListProducts={wishListProducts} dictionary={dictionary} userId={userId}/>
-            {/*{wishListProducts.map((product, id) => (*/}
-            {/*    <>*/}
-            {/*        <WishList*/}
-            {/*            product={product}*/}
-            {/*            key={id}*/}
-            {/*            dictionary={dictionary}*/}
-            {/*            userId={userId}*/}
-            {/*            wishListProducts={wishListProducts}*/}
-            {/*        />*/}
-            {/*    </>*/}
-            {/*))}*/}
+            <WishList
+                wishListProducts={wishListProducts}
+                dictionary={dictionary}
+                userId={userId}
+            />
         </>
     );
 }

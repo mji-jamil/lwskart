@@ -7,7 +7,6 @@ export const POST = async (req) => {
     const { userId, productId, quantity } = await req.json();
 
     try {
-        await dbConnect();
         const user = await userModel.findById(userId);
 
         if (!user) {

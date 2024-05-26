@@ -1,7 +1,7 @@
-import {getProducts,} from "@/database/queries";
+import { getProducts } from "@/database/queries";
 import Products from "@/components/products/Products";
 import ProductNotFound from "@/components/products/ProductNotFound";
-import {getDictionary} from "@/app/[lang]/dictionaries";
+import { getDictionary } from "@/app/[lang]/dictionaries";
 
 export default async function Page({ params: { lang }, searchParams }) {
     const dictionary = await getDictionary(lang);

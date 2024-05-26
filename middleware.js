@@ -15,7 +15,6 @@ function getLocale(request) {
 }
 
 export function middleware(request) {
-
     const pathname = request.nextUrl.pathname;
 
     const pathnameIsMissingLocale = locales.every(
@@ -31,8 +30,6 @@ export function middleware(request) {
         );
     }
 }
-
-
 
 export const config = {
     matcher: [

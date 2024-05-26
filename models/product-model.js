@@ -25,8 +25,8 @@ const productSchema = new Schema(
             max: 5,
         },
         review: {
-           type: Number,
-           required: false,
+            type: Number,
+            required: false,
         },
         stock: {
             type: Number,

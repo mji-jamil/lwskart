@@ -6,7 +6,7 @@ import { login } from "@/actions";
 import SocialLogin from "@/components/auth/SocialLogin";
 import Link from "next/link";
 
-export default function Login({dictionary}) {
+export default function Login({ dictionary }) {
     const [error, setError] = useState("");
     const router = useRouter();
 
@@ -26,6 +26,7 @@ export default function Login({dictionary}) {
             setError("An unexpected error occurred");
         }
     }
+
     return (
         <>
             <div className="contain py-16">

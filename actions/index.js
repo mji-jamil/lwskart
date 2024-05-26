@@ -14,6 +14,8 @@ export async function login(formData) {
         }
         return response;
     } catch (error) {
-        return { error: { message: error.message || "An unexpected error occurred" } };
+        return {
+            error: { message: error.message || "An unexpected error occurred" },
+        };
     }
 }

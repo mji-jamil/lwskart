@@ -1,5 +1,4 @@
 import { dbConnect } from "@/service/mongo";
-import mongoose from "mongoose";
 import { userModel } from "@/models/user-model";
 import { NextResponse } from "next/server";
 
@@ -7,11 +6,10 @@ export const POST = async (req) => {
     const { userId, productId } = await req.json();
 
     try {
-        await dbConnect();
         const user = await userModel.findByIdAndUpdate(
             userId,
             { $pull: { wishlist: productId } },
-            { new: true }
+            { new: true },
         );
 
         if (!user) {

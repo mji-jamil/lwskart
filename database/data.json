@@ -49,7 +49,9 @@
         "brand": "Samsung",
         "category": "Electronics",
         "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
-        "images": ["https://cdn.dummyjson.com/product-images/3/1.jpg"],
+        "images": [
+            "https://cdn.dummyjson.com/product-images/3/1.jpg"
+        ],
         "newArrival": false,
         "trending": false
     },
@@ -606,7 +608,6 @@
         "trending": false
     },
     {
-
         "title": "Stiched Kurta plus trouser",
         "description": "FABRIC: LILEIN CHEST: 21 LENGHT: 37 TROUSER: (38) :ARABIC LILEIN",
         "price": 80,
@@ -627,7 +628,6 @@
         "trending": true
     },
     {
-
         "title": "frock gold printed",
         "description": "Ghazi fabric long frock gold printed ready to wear stitched collection (G992)",
         "price": 600,
@@ -648,7 +648,6 @@
         "trending": false
     },
     {
-
         "title": "Ladies Multicolored Dress",
         "description": "This classy shirt for women gives you a gorgeous look on everyday wear and specially for semi-casual wears.",
         "price": 79,
@@ -669,7 +668,6 @@
         "trending": false
     },
     {
-
         "title": "Malai Maxi Dress",
         "description": "Ready to wear, Unique design according to modern standard fashion, Best fitting ,Imported stuff",
         "price": 50,
@@ -690,7 +688,6 @@
         "trending": false
     },
     {
-
         "title": "women's shoes",
         "description": "Close: Lace, Style with bottom: Increased inside, Sole Material: Rubber",
         "price": 40,
@@ -711,7 +708,6 @@
         "trending": false
     },
     {
-
         "title": "Sneaker shoes",
         "description": "Synthetic Leather Casual Sneaker shoes for Women/girls Sneakers For Women",
         "price": 120,
@@ -731,7 +727,6 @@
         "trending": true
     },
     {
-
         "title": "Women Strip Heel",
         "description": "Features: Flip-flops, Mid Heel, Comfortable, Striped Heel, Antiskid, Striped",
         "price": 40,
@@ -752,7 +747,6 @@
         "trending": false
     },
     {
-
         "title": "Chappals & Shoe Ladies Metallic",
         "description": "Womens Chappals & Shoe Ladies Metallic Tong Thong Sandal Flat Summer 2020 Maasai Sandals",
         "price": 23,
@@ -772,7 +766,6 @@
         "trending": false
     },
     {
-
         "title": "Women Shoes",
         "description": "2020 New Arrivals Genuine Leather Fashion Trend Platform Summer Women Shoes",
         "price": 36,
@@ -792,7 +785,6 @@
         "trending": false
     },
     {
-
         "title": "half sleeves T shirts",
         "description": "Many store is creating new designs and trend every month and every year. Daraz.pk have a beautiful range of men fashion brands",
         "price": 23,
@@ -812,7 +804,6 @@
         "trending": false
     },
     {
-
         "title": "FREE FIRE T Shirt",
         "description": "quality and professional print - It doesn't just look high quality, it is high quality.",
         "price": 10,
@@ -833,7 +824,6 @@
         "trending": true
     },
     {
-
         "title": "printed high quality T shirts",
         "description": "Brand: vintage Apparel ,Export quality",
         "price": 35,
@@ -854,7 +844,6 @@
         "trending": false
     },
     {
-
         "title": "Pubg Printed Graphic T-Shirt",
         "description": "Product Description Features: 100% Ultra soft Polyester Jersey. Vibrant & colorful printing on front. Feels soft as cotton without ever cracking",
         "price": 46,
@@ -875,7 +864,6 @@
         "trending": false
     },
     {
-
         "title": "Money Heist Printed Summer T Shirts",
         "description": "Fabric Jercy, Size: M & L Wear Stylish Dual Stiched",
         "price": 66,
@@ -883,7 +871,6 @@
         "rating": 4.9,
         "review": 7,
         "stock": 122,
-
         "brand": "The Warehouse",
         "category": "Dress",
         "thumbnail": "https://cdn.dummyjson.com/product-images/55/thumbnail.jpg",
@@ -897,7 +884,6 @@
         "trending": false
     },
     {
-
         "title": "Sneakers Joggers Shoes",
         "description": "Gender: Men , Colors: Same as DisplayedCondition: 100% Brand New",
         "price": 40,
@@ -918,7 +904,6 @@
         "trending": false
     },
     {
-
         "title": "Loafers for men",
         "description": "Men Shoes - Loafers for men - Rubber Shoes - Nylon Shoes - Shoes for men - Moccassion - Pure Nylon (Rubber) Expot Quality.",
         "price": 47,

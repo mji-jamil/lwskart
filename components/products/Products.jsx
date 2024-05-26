@@ -2,11 +2,8 @@ import Link from "next/link";
 import Sidebar from "@/components/products/Sidebar";
 import ProductCard from "@/components/products/ProductCard";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import {getAllCategories} from "@/database/queries";
 
-export default async function Products({products, dictionary}) {
-    // const categories = await getAllCategories();
-    // console.log(products);
+export default async function Products({ products, dictionary }) {
     return (
         <>
             <div className="container py-4 flex items-center gap-3">
@@ -21,7 +18,7 @@ export default async function Products({products, dictionary}) {
 
             <div className="container grid md:grid-cols-4 grid-cols-2 gap-6 pt-4 pb-16 items-start">
                 <Sidebar dictionary={dictionary} />
-                <ProductCard products={products} dictionary={dictionary}/>
+                <ProductCard products={products} dictionary={dictionary} />
             </div>
         </>
     );

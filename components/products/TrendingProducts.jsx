@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import {getUserData} from "@/database/queries";
-import {auth} from "@/auth";
+import { getUserData } from "@/database/queries";
+import { auth } from "@/auth";
 import AddToCart from "@/components/buttons/AddToCart";
 import WishListButton from "@/components/buttons/WishListButton";
 
@@ -39,7 +39,11 @@ export default async function TrendingProducts({ trending, dictionary }) {
                                     >
                                         <i className="fa-solid fa-magnifying-glass"></i>
                                     </Link>
-                                    <WishListButton productId={product?._id.toString()} userId={userData?._id.toString()} session={session}/>
+                                    <WishListButton
+                                        productId={product?._id.toString()}
+                                        userId={userData?._id.toString()}
+                                        session={session}
+                                    />
                                 </div>
                             </div>
                             <div className="pt-4 pb-3 px-4">
@@ -77,7 +81,12 @@ export default async function TrendingProducts({ trending, dictionary }) {
                                     </div>
                                 </div>
                             </div>
-                            <AddToCart dictionary={dictionary} productId={product?._id.toString()} userId={userData?._id.toString()} session={session}/>
+                            <AddToCart
+                                dictionary={dictionary}
+                                productId={product?._id.toString()}
+                                userId={userData?._id.toString()}
+                                session={session}
+                            />
                         </div>
                     ))}
                 </div>

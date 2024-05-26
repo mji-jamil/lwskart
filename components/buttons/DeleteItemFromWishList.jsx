@@ -1,12 +1,17 @@
-"use client"
+"use client";
 import { useRouter } from "next/navigation";
 
-
-export default function DeleteItemFromWishList({ productId, userId, onDelete }) {
+export default function DeleteItemFromWishList({
+    productId,
+    userId,
+    onDelete,
+}) {
     const router = useRouter();
+
     function onReload() {
-        window.location.href="/wishlist"
+        window.location.href = "/wishlist";
     }
+
     const deleteItem = async () => {
         if (window.confirm("Are you sure you want to delete this item?")) {
             try {
@@ -19,8 +24,8 @@ export default function DeleteItemFromWishList({ productId, userId, onDelete }) 
                 });
 
                 if (response.ok) {
-                    onDelete(productId)
-                    onReload()
+                    onDelete(productId);
+                    onReload();
                     // router.push("/wishlist")
                 } else {
                     const data = await response.json();

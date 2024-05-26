@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Footer({dictionary}) {
+export default function Footer({ dictionary }) {
     return (
         <>
             <footer className="bg-white pt-16 pb-12 border-t border-gray-100">

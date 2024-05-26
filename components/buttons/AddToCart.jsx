@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 export default function AddToCart({ dictionary, productId, userId, session }) {
     const router = useRouter();
     const addToCart = async () => {
-        if (!session) {
+        if (!userId) {
             router.push("/login");
         } else {
             if (

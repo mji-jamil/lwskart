@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function Copyright({dictionary}) {
+export default function Copyright({ dictionary }) {
     return (
         <>
             <div className="bg-gray-800 py-4">

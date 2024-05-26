@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-export default function CheckOut({cart}) {
-    // console.log(cart);
+export default function CheckOut({ cart }) {
     return (
         <>
             <div className="container py-4 flex items-center gap-3">

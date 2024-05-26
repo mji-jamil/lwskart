@@ -1,13 +1,16 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react";
-import { getAllCategories, getProductCountByCategory } from "@/database/queries";
+import {
+    getAllCategories,
+    getProductCountByCategory,
+} from "@/database/queries";
 import { useRouter } from "next/navigation";
 
 export default function Sidebar() {
     const [categories, setCategories] = useState([]);
     const [productCounts, setProductCounts] = useState({});
-    const [minPrice, setMinPrice] = useState('');
-    const [maxPrice, setMaxPrice] = useState('');
+    const [minPrice, setMinPrice] = useState("");
+    const [maxPrice, setMaxPrice] = useState("");
     const router = useRouter();
 
     useEffect(() => {
@@ -27,17 +30,17 @@ export default function Sidebar() {
 
     const handleCategoryChange = (category) => {
         const currentParams = new URLSearchParams(window.location.search);
-        const categories = currentParams.get('categories')?.split(',') || [];
+        const categories = currentParams.get("categories")?.split(",") || [];
         if (categories.includes(category)) {
-            const newCategories = categories.filter(cat => cat !== category);
+            const newCategories = categories.filter((cat) => cat !== category);
             if (newCategories.length > 0) {
-                currentParams.set('categories', newCategories.join(','));
+                currentParams.set("categories", newCategories.join(","));
             } else {
-                currentParams.delete('categories');
+                currentParams.delete("categories");
             }
         } else {
             categories.push(category);
-            currentParams.set('categories', categories.join(','));
+            currentParams.set("categories", categories.join(","));
         }
         updateUrlParams(currentParams);
     };
@@ -45,14 +48,14 @@ export default function Sidebar() {
     const handlePriceChange = () => {
         const currentParams = new URLSearchParams(window.location.search);
         if (minPrice) {
-            currentParams.set('min', minPrice);
+            currentParams.set("min", minPrice);
         } else {
-            currentParams.delete('min');
+            currentParams.delete("min");
         }
         if (maxPrice) {
-            currentParams.set('max', maxPrice);
+            currentParams.set("max", maxPrice);
         } else {
-            currentParams.delete('max');
+            currentParams.delete("max");
         }
         updateUrlParams(currentParams);
     };
@@ -81,7 +84,9 @@ export default function Sidebar() {
                                         name={`cat-${i}`}
                                         id={`cat-${i}`}
                                         className="text-primary focus:ring-0 rounded-sm cursor-pointer"
-                                        onChange={() => handleCategoryChange(category)}
+                                        onChange={() =>
+                                            handleCategoryChange(category)
+                                        }
                                     />
                                     <label
                                         htmlFor={`cat-${i}`}

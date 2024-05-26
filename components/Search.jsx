@@ -1,6 +1,6 @@
 "use client";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import {useState} from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 export default function Search({ dictionary }) {
     const searchParams = useSearchParams();
@@ -11,18 +11,17 @@ export default function Search({ dictionary }) {
     const handleInput = (e) => {
         e.preventDefault();
         setSearchTerm(e.target.value);
-    }
+    };
 
     const doSearch = (e) => {
         const newParams = new URLSearchParams(searchParams.toString());
         newParams.set("query", searchTerm);
-        if(pathname.includes('products')){
+        if (pathname.includes("products")) {
             router.replace(`${pathname}?${newParams.toString()}`);
-        }
-        else {
+        } else {
             router.replace(`${pathname}/products?${newParams.toString()}`);
         }
-    }
+    };
 
     return (
         <>
@@ -38,7 +37,10 @@ export default function Search({ dictionary }) {
                     placeholder={dictionary?.search}
                     onChange={handleInput}
                 />
-                <button className="bg-primary border border-primary text-white px-8 rounded-r-md hover:bg-transparent hover:text-primary transition hidden md:flex" onClick={doSearch}>
+                <button
+                    className="bg-primary border border-primary text-white px-8 rounded-r-md hover:bg-transparent hover:text-primary transition hidden md:flex"
+                    onClick={doSearch}
+                >
                     {dictionary?.search}
                 </button>
             </div>

@@ -1,13 +1,13 @@
 import CheckOut from "@/components/payments/CheckOut";
-import {getDictionary} from "@/app/[lang]/dictionaries";
-import {auth} from "@/auth";
-import {getProductById, getUserData} from "@/database/queries";
+import { getDictionary } from "@/app/[lang]/dictionaries";
+import { auth } from "@/auth";
+import { getProductById, getUserData } from "@/database/queries";
 
-export default async function CheckOutPage({params: {lang}}) {
+export default async function CheckOutPage({ params: { lang } }) {
     const dictionary = await getDictionary(lang);
     const session = await auth();
     const userData = await getUserData(session?.user?.email);
-    const userId = userData?._id;
+    const userId = userData?._id.toString();
 
     let cart = [];
     if (userData?.wishlist.length > 0) {
@@ -17,10 +17,10 @@ export default async function CheckOutPage({params: {lang}}) {
             }),
         );
     }
-    // console.log(cart);
+
     return (
         <>
-            <CheckOut cart={cart}/>
+            <CheckOut cart={cart} />
         </>
     );
 }

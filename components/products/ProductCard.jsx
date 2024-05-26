@@ -2,8 +2,8 @@ import Image from "next/image";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Link from "next/link";
 import AddToCart from "@/components/buttons/AddToCart";
-import {auth} from "@/auth";
-import {getUserData} from "@/database/queries";
+import { auth } from "@/auth";
+import { getUserData } from "@/database/queries";
 import WishListButton from "@/components/buttons/WishListButton";
 
 export default async function ProductCard({ products, dictionary }) {
@@ -31,7 +31,11 @@ export default async function ProductCard({ products, dictionary }) {
                             >
                                 <i className="fa-solid fa-magnifying-glass"></i>
                             </a>
-                            <WishListButton productId={product?._id.toString()} userId={userData?._id.toString()} session={session}/>
+                            <WishListButton
+                                productId={product?._id.toString()}
+                                userId={userData?._id.toString()}
+                                session={session}
+                            />
                         </div>
                     </div>
                     <div className="pt-4 pb-3 px-4">
@@ -69,7 +73,12 @@ export default async function ProductCard({ products, dictionary }) {
                             </div>
                         </div>
                     </div>
-                    <AddToCart dictionary={dictionary} productId={product?._id.toString()} userId={userData?._id.toString()} session={session}/>
+                    <AddToCart
+                        dictionary={dictionary}
+                        productId={product?._id.toString()}
+                        userId={userData?._id.toString()}
+                        session={session}
+                    />
                 </div>
             ))}
         </>

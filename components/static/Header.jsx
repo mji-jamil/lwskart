@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -7,11 +7,11 @@ import Search from "@/components/Search";
 
 export default function Header({ dictionary, wishListCount, cartCount }) {
     function onClickWishList() {
-        window.location.href = "/wishlist"
+        window.location.href = "/wishlist";
     }
 
     function onClickHomePage() {
-        window.location.href="/"
+        window.location.href = "/";
     }
 
     return (

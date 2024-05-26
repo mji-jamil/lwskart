@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function Feature({dictionary}) {
+export default function Feature({ dictionary }) {
     return (
         <>
             <div className="container py-16">

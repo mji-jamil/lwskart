@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Category({dictionary}) {
+export default function Category({ dictionary }) {
     return (
         <>
             <div className="container py-16">

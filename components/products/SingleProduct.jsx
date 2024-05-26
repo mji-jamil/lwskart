@@ -1,11 +1,10 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import RelatedProducts from "@/components/products/RelatedProducts";
 import AddToCartIncDec from "@/components/buttons/AddToCartIncDec";
-import {auth} from "@/auth";
-import {getUserData} from "@/database/queries";
+import { auth } from "@/auth";
+import { getUserData } from "@/database/queries";
 
 export default async function SingleProduct({ product, dictionary }) {
     const session = await auth();
@@ -20,7 +19,9 @@ export default async function SingleProduct({ product, dictionary }) {
                 <span className="text-sm text-gray-400">
                     <i className="fa-solid fa-chevron-right"></i>
                 </span>
-                <p className="text-gray-600 font-medium">{dictionary?.product}</p>
+                <p className="text-gray-600 font-medium">
+                    {dictionary?.product}
+                </p>
             </div>
             <div className="container grid grid-cols-2 gap-6 mb-8">
                 <div className="h-100">
@@ -105,7 +106,7 @@ export default async function SingleProduct({ product, dictionary }) {
                             {(
                                 product?.price -
                                 (product?.price * product?.discountPercentage) /
-                                100
+                                    100
                             ).toFixed(2)}
                         </p>
                         <p className="text-base text-gray-400 line-through">
@@ -115,7 +116,11 @@ export default async function SingleProduct({ product, dictionary }) {
 
                     <p className="mt-4 text-gray-600">{product?.description}</p>
 
-                    <AddToCartIncDec dictionary={dictionary} productId={product?._id.toString()} userId={userData?._id.toString()}/>
+                    <AddToCartIncDec
+                        dictionary={dictionary}
+                        productId={product?._id.toString()}
+                        userId={userData?._id.toString()}
+                    />
 
                     <div className="flex gap-3 mt-4">
                         <a
@@ -141,7 +146,10 @@ export default async function SingleProduct({ product, dictionary }) {
             </div>
             <hr />
             <div className="mt-8">
-                <RelatedProducts category={product?.category} dictionary={dictionary} />
+                <RelatedProducts
+                    category={product?.category}
+                    dictionary={dictionary}
+                />
             </div>
         </>
     );

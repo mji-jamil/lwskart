@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import {updateBillingData, updateData, updateShippingData} from "@/database/queries";
+import { updateBillingData } from "@/database/queries";
 
 export default function UpdateBilling({ user }) {
     const [formData, setFormData] = useState({
@@ -31,7 +31,7 @@ export default function UpdateBilling({ user }) {
                 address: formData.billingAddress,
                 postCode: formData.postCode,
                 phoneNumber: formData.phoneNumber,
-            }
+            },
         };
 
         try {
@@ -45,7 +45,6 @@ export default function UpdateBilling({ user }) {
             setError(err.message);
         }
     };
-
 
     return (
         <div className="contain py-16">

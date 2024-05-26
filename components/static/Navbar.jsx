@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -125,7 +124,7 @@ export default async function Navbar({ dictionary }) {
                             >
                                 {dictionary?.home}
                             </Link>
-                            <ProductNav dictionary={dictionary}/>
+                            <ProductNav dictionary={dictionary} />
                             <Link
                                 href="/about"
                                 className="text-gray-200 hover:text-white transition"

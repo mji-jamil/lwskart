@@ -5,18 +5,13 @@ import { replaceMongoIdInObject } from "@/utils/data-util";
 import { productModel } from "@/models/product-model";
 
 export async function updateData(formData) {
-    await dbConnect();
     const { email, name, phoneNumber } = formData;
     try {
         const updateFields = {
             name,
             email,
             phoneNumber,
-
         };
-        // if (password) {
-        //     updateFields.password = password;
-        // }
 
         const user = await userModel.findOneAndUpdate(
             { email: email },
@@ -44,7 +39,6 @@ export async function getUserData(email) {
 }
 
 export async function updateShippingData(data) {
-    await dbConnect();
     try {
         const { email, shippingAddress } = data;
         if (!email)
@@ -70,7 +64,6 @@ export async function updateShippingData(data) {
 }
 
 export async function updateBillingData(data) {
-    await dbConnect();
     try {
         const { email, billingAddress } = data;
         if (!email)
@@ -179,13 +172,15 @@ export async function getProductsByCategory(category) {
 
 export async function getProductsByTitle(title) {
     try {
-        const products = await productModel.find({ title: new RegExp(title, 'i') });
+        const products = await productModel.find({
+            title: new RegExp(title, "i"),
+        });
 
         if (!products.length) {
             return {
-                status: 'not_found',
+                status: "not_found",
                 message: "No products found with the specified title",
-                products: []
+                products: [],
             };
         }
         return products;
@@ -199,10 +194,12 @@ export async function getProducts({ query, categories, min, max }) {
     const filters = {};
 
     if (query) {
-        filters.title = { $regex: query, $options: 'i' };
+        filters.title = { $regex: query, $options: "i" };
     }
     if (categories && categories.length > 0) {
-        const categoryFilter = Array.isArray(categories) ? categories : [categories];
+        const categoryFilter = Array.isArray(categories)
+            ? categories
+            : [categories];
         filters.category = { $in: categoryFilter };
     }
     if (min) {

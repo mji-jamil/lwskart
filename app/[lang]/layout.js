@@ -6,9 +6,8 @@ import Footer from "@/components/static/Footer";
 import Copyright from "@/components/static/Copyright";
 import { dbConnect } from "@/service/mongo";
 import { getDictionary } from "@/app/[lang]/dictionaries";
-import {auth} from "@/auth";
-import {getUserData} from "@/database/queries";
-import {sendError} from "next/dist/server/api-utils";
+import { auth } from "@/auth";
+import { getUserData } from "@/database/queries";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -33,21 +32,24 @@ export default async function RootLayout({ children, params: { lang } }) {
     const session = await auth();
     let wishListCount = "";
     let cartCount = "";
-    if(session) {
-        const userData = await getUserData(session?.user?.email)
+    if (session) {
+        const userData = await getUserData(session?.user?.email);
         wishListCount = userData?.wishlist.length;
-        cartCount = userData?.cart.length
+        cartCount = userData?.cart.length;
     }
 
     return (
         <html lang="en">
             <body className={`${poppins.variable} ${roboto.variable}`}>
-                    <Header dictionary={dictionary} wishListCount={wishListCount} cartCount={cartCount}/>
-                    <Navbar dictionary={dictionary} />
-                    {children}
-                    <Footer dictionary={dictionary} />
-                    <Copyright dictionary={dictionary} />
-
+                <Header
+                    dictionary={dictionary}
+                    wishListCount={wishListCount}
+                    cartCount={cartCount}
+                />
+                <Navbar dictionary={dictionary} />
+                {children}
+                <Footer dictionary={dictionary} />
+                <Copyright dictionary={dictionary} />
             </body>
         </html>
     );
