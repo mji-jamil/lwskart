@@ -30,6 +30,8 @@ export default async function RootLayout({ children, params: { lang } }) {
     await dbConnect();
     const dictionary = await getDictionary(lang);
     const session = await auth();
+    const userDetails = await getUserData(session?.user?.email);
+    const userName = userDetails?.name;
     let wishListCount = "";
     let cartCount = "";
     if (session) {
@@ -46,7 +48,7 @@ export default async function RootLayout({ children, params: { lang } }) {
                     wishListCount={wishListCount}
                     cartCount={cartCount}
                 />
-                <Navbar dictionary={dictionary} />
+                <Navbar dictionary={dictionary} userName={userName}/>
                 {children}
                 <Footer dictionary={dictionary} />
                 <Copyright dictionary={dictionary} />

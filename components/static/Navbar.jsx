@@ -5,8 +5,8 @@ import { auth } from "@/auth";
 import Logout from "@/components/auth/Logout";
 import ProductNav from "@/components/static/ProductNav";
 
-export default async function Navbar({ dictionary }) {
-    const session = await auth();
+export default async function Navbar({ dictionary, userName }) {
+    // const session = await auth();
 
     return (
         <>
@@ -138,11 +138,12 @@ export default async function Navbar({ dictionary }) {
                                 {dictionary?.contact_us}
                             </Link>
                         </div>
-                        {session?.user ? (
+                        {userName ? (
                             <>
                                 <div>
                                     <span className="text-gray-200 hover:text-white transition">
-                                        {session.user?.name}
+                                        {/*{session?.user?.name}*/}
+                                        {userName}
                                     </span>
                                     <span className="text-white"> | </span>
                                     <span className="text-gray-200 hover:text-white transition">
