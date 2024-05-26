@@ -8,31 +8,36 @@ export default function WishListButton({
 }) {
     const router = useRouter();
     const addToWishList = async (e) => {
-
         if (!session) {
             router.push("/login");
         } else {
-            try {
-                const response = await fetch("/api/wishList", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ userId, productId }),
-                });
+            if (
+                window.confirm(
+                    "Are you sure you want to add this item to wishlist?",
+                )
+            ) {
+                try {
+                    const response = await fetch("/api/wishList", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({ userId, productId }),
+                    });
 
-                const data = await response.json();
+                    const data = await response.json();
 
-                if (response.ok) {
-                    console.log("Product added to buttons:", data.message);
-                } else {
-                    console.error(
-                        "Failed to add product to buttons:",
-                        data.error,
-                    );
+                    if (response.ok) {
+                        console.log("Product added to buttons:", data.message);
+                    } else {
+                        console.error(
+                            "Failed to add product to buttons:",
+                            data.error,
+                        );
+                    }
+                } catch (error) {
+                    console.error("Error adding product to buttons:", error);
                 }
-            } catch (error) {
-                console.error("Error adding product to buttons:", error);
             }
         }
     };
