@@ -1,11 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { auth } from "@/auth";
 import Logout from "@/components/auth/Logout";
 import ProductNav from "@/components/static/ProductNav";
 
-export default async function Navbar({ dictionary, userName }) {
+export default function Navbar({ dictionary, userName }) {
     // const session = await auth();
 
     return (
