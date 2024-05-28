@@ -54,8 +54,8 @@ export const POST = async (req) => {
 
         // Find and update the user
         const updatedUser = await userModel.findOneAndUpdate(
-            { _id: userId, wishlist: { $ne: productObjectId } }, // Check if product is not in wishlist
-            { $addToSet: { wishlist: productObjectId } }, // Add product to wishlist if not already there
+            { _id: userId }, // Check if product is not in wishlist
+            { $push: { wishlist: productObjectId } }, // Add product to wishlist if not already there
             { new: true }
         );
 

@@ -64,7 +64,7 @@ export const POST = async (req) => {
 
         const updatedUser = await userModel.findOneAndUpdate(
             { _id: userId },
-            { $addToSet: { cart: new mongoose.Types.ObjectId(productId) } },
+            { $push: { cart: new mongoose.Types.ObjectId(productId) } },
             { new: true },
         );
 
