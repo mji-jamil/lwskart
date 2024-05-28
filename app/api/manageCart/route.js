@@ -71,7 +71,6 @@
 // };
 
 import { dbConnect } from "@/service/mongo";
-import mongoose from "mongoose";
 import { userModel } from "@/models/user-model";
 import { productModel } from "@/models/product-model";
 import { NextResponse } from "next/server";
@@ -113,7 +112,7 @@ export const POST = async (req) => {
             // Remove products from the cart
             const removedProducts = await userModel.findByIdAndUpdate(userId, {
                 $pull: { cart: { $in: Array(-difference).fill(productId) } }
-            });
+            }, {new: true });
             product.stock += removedProducts.length;
         }
 
