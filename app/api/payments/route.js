@@ -23,9 +23,9 @@ export const POST = async (req) => {
             userId,
             {
                 $push: { orders: orderId },
-                $set: { cart: [] }
+                $set: { cart: [] },
             },
-            { new: true }
+            { new: true },
         );
 
         if (!updatedUser) {
@@ -37,9 +37,9 @@ export const POST = async (req) => {
             {
                 status: 201,
                 headers: {
-                    "Content-Type": "application/json"
-                }
-            }
+                    "Content-Type": "application/json",
+                },
+            },
         );
     } catch (error) {
         console.error("Error creating order:", error);
@@ -48,9 +48,9 @@ export const POST = async (req) => {
             {
                 status: 500,
                 headers: {
-                    "Content-Type": "application/json"
-                }
-            }
+                    "Content-Type": "application/json",
+                },
+            },
         );
     }
 };

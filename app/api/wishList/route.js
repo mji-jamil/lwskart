@@ -13,7 +13,7 @@ export const POST = async (req) => {
         const updatedUser = await userModel.findOneAndUpdate(
             { _id: userId },
             { $push: { wishlist: productObjectId } },
-            { new: true }
+            { new: true },
         );
 
         if (!updatedUser) {
@@ -21,11 +21,15 @@ export const POST = async (req) => {
             if (!userExists) {
                 return new NextResponse("User not found", { status: 404 });
             } else {
-                return new NextResponse("Product already in wishlist", { status: 200 });
+                return new NextResponse("Product already in wishlist", {
+                    status: 200,
+                });
             }
         }
 
-        return new NextResponse("Product added to wishlist successfully", { status: 201 });
+        return new NextResponse("Product added to wishlist successfully", {
+            status: 201,
+        });
     } catch (error) {
         return new NextResponse(error.message, { status: 500 });
     }
