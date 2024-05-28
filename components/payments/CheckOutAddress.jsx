@@ -4,10 +4,19 @@ export default  function CheckOutAddress({userData}) {
     return (
         <>
             <div className="col-span-8 border border-gray-200 p-4 rounded">
-                <h3 className="text-lg font-medium capitalize mb-4">
-                    Checkout
-                </h3>
-                <Link href={"/update/shipping"}>Update Shipping address here...</Link>
+                <div className="flex justify-between items-center">
+                    <div>
+                        <h3 className="text-lg font-medium capitalize mb-4">
+                            Checkout
+                        </h3>
+                    </div>
+                    <div className="text-right">
+                        <Link href="/update/shipping"className="text-primary hover:text-blue-700">
+                                Update Shipping
+                        </Link>
+                    </div>
+                </div>
+
                 <div className="space-y-4">
                     <div>
                         <label htmlFor="name" className="text-gray-600">

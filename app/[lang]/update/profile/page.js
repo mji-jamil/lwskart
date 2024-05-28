@@ -2,7 +2,7 @@ import UpdateProfile from "@/components/profile/UpdateProfile";
 import { auth } from "@/auth";
 import { getUserData } from "@/database/queries";
 
-export default async function Page() {
+export default async function ProfilePage() {
     const session = await auth();
     const userData = await getUserData(session?.user?.email);
 

@@ -3,7 +3,6 @@ import { getDictionary } from "@/app/[lang]/dictionaries";
 import { auth } from "@/auth";
 import { getProductById, getUserData } from "@/database/queries";
 import Link from "next/link";
-import Cart from "@/components/profile/Cart";
 
 export default async function CheckOutPage({ params: { lang } }) {
     const dictionary = await getDictionary(lang);
@@ -32,7 +31,6 @@ export default async function CheckOutPage({ params: { lang } }) {
                 <p className="text-gray-600 font-bold">Checkout</p>
             </div>
             <CheckOut cart={cart} />
-
         </>
     );
 }
