@@ -83,7 +83,7 @@ export default function Cart({ dictionary, userId, cart }) {
                                         product?.discountPercentage || 0
                                     }
                                     dictionary={dictionary}
-                                    quantity={product.quantity}
+                                    quantity={product?.quantity}
                                 />
                                 <DeleteItemFromCart
                                     productId={product?._id.toString()}

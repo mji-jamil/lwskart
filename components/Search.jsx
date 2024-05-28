@@ -18,7 +18,9 @@ export default function Search({ dictionary }) {
         newParams.set("query", searchTerm);
         if (pathname.includes("products")) {
             router.replace(`${pathname}?${newParams.toString()}`);
-        } else {
+        } else if(pathname.includes("cart")){
+            router.replace(`https:://lwskart-mji.vercel.app/products?${newParams.toString()}`);
+        }else {
             router.replace(`${pathname}/products?${newParams.toString()}`);
         }
     };
