@@ -60,7 +60,7 @@ export const POST = async (req) => {
 
         // Use findOneAndUpdate to add the product to the user's cart
         const user = await userModel.findOneAndUpdate(
-            { _id: userId },
+            { _id: userId.toString() },
             {
                 $setOnInsert: { cart: [] },
                 $push: { cart: new mongoose.Types.ObjectId(productId) }
