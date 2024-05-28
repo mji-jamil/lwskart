@@ -9,6 +9,10 @@ export const POST = async (req) => {
 
     try {
         await dbConnect();
+        const user = await userModel.findById(userId);
+        if (!user) {
+            return new NextResponse("User not found", { status: 404 });
+        }
 
         const product = await productModel.findById(productId);
         if (!product) {
@@ -19,21 +23,11 @@ export const POST = async (req) => {
             return new NextResponse("Not enough product in stock", { status: 400 });
         }
 
-        const user = await userModel.findOneAndUpdate(
-            { _id: userId },
-            {
-                $push: {
-                    cart: {
-                        $each: Array.from({ length: quantity }, () => new mongoose.Types.ObjectId(productId)),
-                    },
-                },
-            },
-            { new: true }
-        );
-
-        if (!user) {
-            return new NextResponse("User not found", { status: 404 });
+        for (let i = 0; i < quantity; i++) {
+            user.cart.push(new mongoose.Types.ObjectId(productId));
         }
+
+        await user.save();
 
         product.stock -= quantity;
         await product.save();
