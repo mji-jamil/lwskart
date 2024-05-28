@@ -111,12 +111,11 @@ export const POST = async (req) => {
         } else if (difference < 0) {
             // Remove products from the cart
             const removedProducts = await userModel.findByIdAndUpdate(userId, {
-                $pull: { cart: { $in: Array(-difference).fill(productId) } }
+                $pull: { cart: { $each: Array(difference).fill(productId) } }
             }, {new: true });
             product.stock += removedProducts.length;
         }
 
-        // Save changes to product
         await product.save();
 
         return new NextResponse("Cart updated successfully", { status: 200 });
