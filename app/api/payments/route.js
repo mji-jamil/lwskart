@@ -15,11 +15,14 @@ export const POST = async (req) => {
             orderStatus: "Pending",
         });
 
-        await newOrder.save();
+        const savedOrder = await newOrder.save();
+
+        const orderId = savedOrder._id.toString();
 
         await userModel.findByIdAndUpdate(
             userId,
-            { $set: { cart: [] } }
+            { $set: { cart: [] },
+                $push: { orders: orderId }}
         );
 
         return new Response(JSON.stringify({ message: "Order created successfully" }), {

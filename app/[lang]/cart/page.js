@@ -23,7 +23,7 @@ export default async function CheckOutPage({ params: { lang } }) {
 
     return (
         <div className="container py-4">
-            <CartHeader />
+            <CartHeader cart={cart}/>
             <Cart cart={cart} userId={userId}/>
         </div>
     );

@@ -5,8 +5,12 @@ import AddToCart from "@/components/buttons/AddToCart";
 import DeleteItemFromWishList from "@/components/buttons/DeleteItemFromWishList";
 import { useState } from "react";
 import Link from "next/link";
+import {redirect} from "next/navigation";
 
 export default function WishList({ dictionary, userId, wishListProducts }) {
+    if(!userId) {
+        redirect("/login")
+    }
     const [products, setProducts] = useState(wishListProducts);
     const handleDeleteItem = (deletedProductId) => {
         setProducts((prevProducts) =>

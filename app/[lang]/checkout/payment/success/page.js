@@ -1,7 +1,7 @@
 import PaymentSuccess from "@/components/payments/PaymentSuccess";
 import {getDictionary} from "@/app/[lang]/dictionaries";
 import {auth} from "@/auth";
-import {getProductById, getUserData} from "@/database/queries";
+import {getOrderById, getProductById, getUserData} from "@/database/queries";
 
 export default async function Page({params: {lang}}) {
     const dictionary = await getDictionary(lang);
@@ -10,16 +10,25 @@ export default async function Page({params: {lang}}) {
     const userId = userData?._id.toString();
 
     let products = [];
-    // if (userData?.cart.length > 0) {
-    //     products = await Promise.all(
-    //         userData.cart.map(async (productId) => {
-    //             return await getProductById(productId.toString());
-    //         }),
-    //     );
-    // }
+    let orderDetails = null
+    if (userData?.orders.length > 0) {
+        const lastOrderId = userData.orders[userData.orders.length - 1];
+        orderDetails = await getOrderById(lastOrderId);
+
+        if (orderDetails && orderDetails.products.length > 0) {
+            products = await Promise.all(
+                orderDetails.products.map(async (productId) => {
+                    return await getProductById(productId.toString());
+                })
+            );
+        }
+    }
+
+    // console.log(products);
+
     return (
         <>
-            <PaymentSuccess />
+            <PaymentSuccess products={products}/>
         </>
     );
 }

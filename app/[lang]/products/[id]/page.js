@@ -37,7 +37,7 @@ export default async function Page({ params }) {
 
     return (
         <>
-            <SingleProduct product={product} dictionary={dictionary} />
+            <SingleProduct product={product} dictionary={dictionary} url={`https://lwskart-mji.vercel.app//products/${id}`} />
         </>
     );
 }

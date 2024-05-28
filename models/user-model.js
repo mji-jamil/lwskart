@@ -62,6 +62,11 @@ const userSchema = new Schema(
                 type: mongoose.Schema.Types.ObjectId,
             },
         ],
+        orders: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+            },
+        ],
     },
     {
         timestamps: true,

@@ -23,7 +23,8 @@
         "next-auth": "^5.0.0-beta.18",
         "pdf-lib": "^1.17.1",
         "react": "^18",
-        "react-dom": "^18"
+        "react-dom": "^18",
+        "react-share": "^5.1.0"
     },
     "devDependencies": {
         "eslint": "^8",

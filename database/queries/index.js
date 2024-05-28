@@ -3,6 +3,7 @@ import { dbConnect } from "@/service/mongo";
 import { userModel } from "@/models/user-model";
 import { replaceMongoIdInObject } from "@/utils/data-util";
 import { productModel } from "@/models/product-model";
+import {orderModel} from "@/models/order-model";
 
 export async function updateData(formData) {
     const { email, name, phoneNumber } = formData;
@@ -227,4 +228,13 @@ export async function getProductsByPriceRange(minPrice, maxPrice) {
 
     const products = await productModel.find(filters).exec();
     return products;
+}
+
+export async function getOrderById(orderId) {
+    try {
+        const orderDetails = await orderModel.findById(orderId.toString())
+        return orderDetails
+    } catch (error) {
+        throw new Error("Failed to fetch order details");
+    }
 }

@@ -2,38 +2,61 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import {redirect} from "next/navigation";
 
-export default function PaymentSuccess() {
+export default function PaymentSuccess({ products }) {
+
+    if(products?.length === 0) {
+        redirect("/products")
+    }
     const [pdfUrl, setPdfUrl] = useState(null);
 
     const generatePdf = async () => {
         const pdfDoc = await PDFDocument.create();
-        const page = pdfDoc.addPage([600, 400]);
+        const page = pdfDoc.addPage([600, 800]);
         const { width, height } = page.getSize();
-
         const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman);
+        const fontSize = 14;
+        let y = height - 100;
 
-        const fontSize = 24;
-        page.drawText('Payment Successful!', {
+        page.drawText('ORDER SUMMARY', {
             x: 50,
-            y: height - 100,
-            size: fontSize,
-            font: timesRomanFont,
-            color: rgb(0, 0.53, 0.71),
-        });
-
-        page.drawText('Thank you for your purchase.', {
-            x: 50,
-            y: height - 150,
-            size: fontSize,
+            y,
+            size: fontSize + 10,
             font: timesRomanFont,
             color: rgb(0, 0, 0),
         });
+        y -= 50;
+
+        let subtotal = 0;
+        let productSummary = {};
+
+        products.forEach((product) => {
+            const { title, price } = product;
+            subtotal += price;
+            productSummary[title] = (productSummary[title] || 0) + 1;
+        });
+
+        for (const [title, quantity] of Object.entries(productSummary)) {
+            const totalPrice = products.find((product) => product.title === title).price * quantity;
+            const formattedTotalPrice = totalPrice.toFixed(2);
+            const productDetails = `${title} (x${quantity}): $${formattedTotalPrice}`;
+            page.drawText(productDetails, { x: 50, y, size: fontSize, font: timesRomanFont, color: rgb(0, 0, 0) });
+            y -= 20;
+        }
+
+        const formattedSubtotal = subtotal.toFixed(2);
+        page.drawText(`Subtotal: $${formattedSubtotal}`, { x: 50, y, size: fontSize, font: timesRomanFont, color: rgb(0, 0, 0) });
+        y -= 20;
+
+        page.drawText(`Shipping: Free`, { x: 50, y, size: fontSize, font: timesRomanFont, color: rgb(0, 0, 0) });
+        y -= 20;
+
+        page.drawText(`Total: $${formattedSubtotal}`, { x: 50, y, size: fontSize, font: timesRomanFont, color: rgb(0, 0, 0) });
 
         const pdfBytes = await pdfDoc.save();
         const pdfBlob = new Blob([pdfBytes], { type: 'application/pdf' });
         const pdfUrl = URL.createObjectURL(pdfBlob);
-
         setPdfUrl(pdfUrl);
     };
 

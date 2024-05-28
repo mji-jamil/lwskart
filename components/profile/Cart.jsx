@@ -5,8 +5,12 @@ import Link from "next/link";
 import ManageCart from "@/components/buttons/ManageCart";
 import DeleteItemFromCart from "@/components/buttons/DeleteItemFromCart";
 import { useState } from "react";
+import {redirect} from "next/navigation";
 
 export default function Cart({ dictionary, userId, cart }) {
+    if(!userId) {
+        redirect("/login")
+    }
     const calculateDiscountedPrice = (price, discountPercentage) => {
         return price * (1 - discountPercentage / 100);
     };
