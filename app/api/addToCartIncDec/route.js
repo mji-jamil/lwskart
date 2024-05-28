@@ -74,15 +74,15 @@ export const POST = async (req) => {
             return new NextResponse("Product not found", { status: 404 });
         }
 
-        const quantityDifference = quantity - product.stock;
-
-        product.stock = quantity;
-
-        await product.save();
-
         const user = await userModel.findById(userId);
         if (!user) {
             return new NextResponse("User not found", { status: 404 });
+        }
+
+        const updatedQuantity = user.cart.filter((item) => item.toString() === productId).length + quantity;
+
+        if (product.stock < updatedQuantity) {
+            return new NextResponse("Not enough product in stock", { status: 400 });
         }
 
         const updatedUser = await userModel.findOneAndUpdate(
@@ -90,7 +90,7 @@ export const POST = async (req) => {
             {
                 $push: {
                     cart: {
-                        $each: Array(quantityDifference > 0 ? quantityDifference : quantity).fill(
+                        $each: Array(quantity).fill(
                             new mongoose.Types.ObjectId(productId),
                         ),
                     },
@@ -104,6 +104,9 @@ export const POST = async (req) => {
                 status: 500,
             });
         }
+
+        product.stock -= quantity;
+        await product.save();
 
         return new NextResponse("Product added to cart successfully", {
             status: 201,
