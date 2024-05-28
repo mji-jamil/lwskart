@@ -89,6 +89,7 @@ export default function Cart({ dictionary, userId, cart }) {
                                     productId={product?._id.toString()}
                                     userId={userId}
                                     onDelete={handleDeleteItem}
+                                    dictionary={dictionary}
                                 />
                             </div>
                         ))
@@ -96,17 +97,17 @@ export default function Cart({ dictionary, userId, cart }) {
                         <div className="md:col-span-3 col-span-2 flex flex-col items-center justify-center text-center">
                             <i className="fa-solid fa-box-open text-6xl text-gray-300 mb-4"></i>
                             <h2 className="text-2xl font-semibold text-gray-700 mb-2">
-                                No Products in Cart
+                                {dictionary?.no_product}
                             </h2>
                             <p className="text-gray-500 mb-4">
-                                Try adding some products to cart.
+                                {dictionary?.try_adding}.
                             </p>
                             <p>
                                 <Link
                                     href={"/products"}
                                     className="text-red-600 text-lg font-medium hover:underline"
                                 >
-                                    VISIT SHOP
+                                    {dictionary?.visit_shop}
                                 </Link>
                             </p>
                         </div>

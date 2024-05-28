@@ -51,5 +51,11 @@
     "forgot": "Forgot Password",
     "or_login": "Or Login With",
     "do_account": "Don't have account",
-    "register": "Register"
+    "register": "Register",
+    "go_to_checkout": "Go To Checkout",
+    "update": "Update",
+    "delete": "Delete",
+    "no_products": "No Products in Cart",
+    "try_adding": "Try adding some products to cart.",
+    "visit-shop": "Visit Shop"
 }

@@ -3,6 +3,10 @@ import Products from "@/components/products/Products";
 import ProductNotFound from "@/components/products/ProductNotFound";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 
+export const metadata = {
+    title: "Products"
+}
+
 export default async function Page({ params: { lang }, searchParams }) {
     const dictionary = await getDictionary(lang);
     const { query, categories, min, max } = searchParams;

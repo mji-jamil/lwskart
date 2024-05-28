@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link";
 
-export default function CartHeader({cart}) {
+export default function CartHeader({cart, dictionary}) {
     function onClickCheckout() {
         window.location.href = "/checkout"
     }
@@ -16,7 +16,7 @@ export default function CartHeader({cart}) {
                     <span className="text-sm text-gray-400">
                         <i className="fa-solid fa-chevron-right"></i>
                     </span>
-                    <p className="text-gray-600 font-bold">Cart</p>
+                    <p className="text-gray-600 font-bold">{dictionary?.cart}</p>
                 </div>
                 <div>
                     {!isCartEmpty && (
@@ -25,7 +25,7 @@ export default function CartHeader({cart}) {
                             className="bg-primary px-4 py-3 text-white px-4 py-2 rounded hover:bg-primary-dark transition"
                             onClick={onClickCheckout}
                         >
-                            Go To Checkout
+                            {dictionary?.go_to_checkout}
                         </Link>
                     )}
                     {isCartEmpty && (

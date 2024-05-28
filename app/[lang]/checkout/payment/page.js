@@ -3,6 +3,10 @@ import {getDictionary} from "@/app/[lang]/dictionaries";
 import {auth} from "@/auth";
 import {getProductById, getUserData} from "@/database/queries";
 
+export const metadata = {
+    title: "Payment"
+}
+
 export default async function PaymentPage({params: {lang}}) {
     const dictionary = await getDictionary(lang);
     const session = await auth();

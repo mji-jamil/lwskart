@@ -4,6 +4,10 @@ import { getProductById, getUserData } from "@/database/queries";
 import Link from "next/link";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 
+export const metadata = {
+    title: "Wishlist"
+}
+
 export default async function Page({ params: { lang } }) {
     const dictionary = await getDictionary(lang);
     const session = await auth();
@@ -29,7 +33,7 @@ export default async function Page({ params: { lang } }) {
                     <i className="fa-solid fa-chevron-right"></i>
                 </span>
                 <Link href={"/products"}>
-                    <p className="text-gray-600 font-medium">Shop</p>
+                    <p className="text-gray-600 font-medium">{dictionary?.shop}</p>
                 </Link>
             </div>
             <WishList

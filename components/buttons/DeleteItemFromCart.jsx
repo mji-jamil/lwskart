@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 
-export default function DeleteItemFromCart({ productId, userId, onDelete }) {
+export default function DeleteItemFromCart({ productId, userId, onDelete, dictionary }) {
     const router = useRouter();
 
     function onReload() {
@@ -40,7 +40,7 @@ export default function DeleteItemFromCart({ productId, userId, onDelete }) {
                     className="bg-primary border border-primary text-white px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:bg-transparent hover:text-primary transition"
                     onClick={deleteItem}
                 >
-                    Delete
+                    {dictionary?.delete}
                 </button>
             </div>
         </>

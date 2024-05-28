@@ -1,10 +1,12 @@
-import CheckOut from "@/components/payments/CheckOut";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 import { auth } from "@/auth";
 import { getProductById, getUserData } from "@/database/queries";
-import Link from "next/link";
 import Cart from "@/components/profile/Cart";
 import CartHeader from "@/components/profile/CartHeader";
+
+export const metadata = {
+    title: "Cart"
+}
 
 export default async function CheckOutPage({ params: { lang } }) {
     const dictionary = await getDictionary(lang);
@@ -23,8 +25,8 @@ export default async function CheckOutPage({ params: { lang } }) {
 
     return (
         <div className="container py-4">
-            <CartHeader cart={cart}/>
-            <Cart cart={cart} userId={userId}/>
+            <CartHeader cart={cart} dictionary={dictionary} />
+            <Cart cart={cart} userId={userId} dictionary={dictionary} />
         </div>
     );
 }

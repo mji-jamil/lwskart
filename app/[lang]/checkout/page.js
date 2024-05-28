@@ -4,6 +4,10 @@ import { auth } from "@/auth";
 import { getProductById, getUserData } from "@/database/queries";
 import Link from "next/link";
 
+export const metadata = {
+    title: "Checkout"
+}
+
 export default async function CheckOutPage({ params: { lang } }) {
     const dictionary = await getDictionary(lang);
     const session = await auth();
