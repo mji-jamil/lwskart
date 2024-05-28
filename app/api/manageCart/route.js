@@ -31,15 +31,21 @@ export const POST = async (req) => {
                     status: 400,
                 });
             }
-            await userModel.findByIdAndUpdate(userId, {
-                $push: {
-                    cart: {
-                        $each: Array(difference).fill(
-                            new mongoose.Types.ObjectId(productId),
-                        ),
+            await userModel.findByIdAndUpdate(
+                userId,
+                {
+                    $push: {
+                        cart: {
+                            $each: Array(difference).fill(
+                                new mongoose.Types.ObjectId(productId),
+                            ),
+                        },
                     },
                 },
-            });
+                {
+                    new: true,
+                },
+            );
             product.stock -= difference;
         } else {
             difference = Math.abs(difference);

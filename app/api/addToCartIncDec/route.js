@@ -20,12 +20,18 @@ export const POST = async (req) => {
         }
 
         if (product.stock < quantity) {
-            return new NextResponse("Not enough product in stock", { status: 400 });
+            return new NextResponse("Not enough product in stock", {
+                status: 400,
+            });
         }
         await userModel.findByIdAndUpdate(userId, {
             $push: {
-                cart: { $each: Array(quantity).fill(new mongoose.Types.ObjectId(productId)) }
-            }
+                cart: {
+                    $each: Array(quantity).fill(
+                        new mongoose.Types.ObjectId(productId),
+                    ),
+                },
+            },
         });
 
         product.stock -= quantity;
