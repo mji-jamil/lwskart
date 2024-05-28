@@ -12,7 +12,7 @@ export const POST = async (req) => {
         const productObjectId = new mongoose.Types.ObjectId(productId);
         const updatedUser = await userModel.findOneAndUpdate(
             { _id: userId },
-            { $push: { wishlist: productObjectId } },
+            { $addToSet: { wishlist: productObjectId } },
             { new: true },
         );
 
