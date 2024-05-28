@@ -14,6 +14,10 @@ export const POST = async (req) => {
             return new NextResponse("User not found", { status: 404 });
         }
 
+        if (!user.wishlist) {
+            user.wishlist = [];
+        }
+
         const isProductInWishlist = user.wishlist.some(
             (item) => item.toString() === productId,
         );

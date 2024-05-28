@@ -15,6 +15,10 @@ export const POST = async (req) => {
             return new NextResponse("User not found", { status: 404 });
         }
 
+        if (!user.cart) {
+            user.cart = [];
+        }
+
         const product = await productModel.findById(productId);
         if (product.stock <= 0) {
             return new NextResponse("Product out of stock", { status: 400 });

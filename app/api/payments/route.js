@@ -18,12 +18,28 @@ export const POST = async (req) => {
         const savedOrder = await newOrder.save();
 
         const orderId = savedOrder._id.toString();
+        const user = await userModel.findById(userId);
+        if (!user) {
+            return new Response(JSON.stringify({ error: "User not found" }), {
+                status: 404,
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+        }
+        if (!user.orders) {
+            user.orders = [];
+        }
 
-        await userModel.findByIdAndUpdate(
-            userId,
-            { $set: { cart: [] },
-                $push: { orders: orderId }}
-        );
+        user.orders.push(orderId);
+        user.cart = [];
+        await user.save();
+
+        // await userModel.findByIdAndUpdate(
+        //     userId,
+        //     { $set: { cart: [] },
+        //         $push: { orders: orderId }}
+        // );
 
         return new Response(JSON.stringify({ message: "Order created successfully" }), {
             status: 201,
