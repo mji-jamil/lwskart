@@ -4,6 +4,7 @@ import { auth } from "@/auth";
 import { getProductById, getUserData } from "@/database/queries";
 import Link from "next/link";
 import Cart from "@/components/profile/Cart";
+import CartHeader from "@/components/profile/CartHeader";
 
 export default async function CheckOutPage({ params: { lang } }) {
     const dictionary = await getDictionary(lang);
@@ -21,18 +22,9 @@ export default async function CheckOutPage({ params: { lang } }) {
     }
 
     return (
-        <>
-            <div className="container py-4 flex items-center gap-3">
-                <Link href="/" className="text-primary text-base">
-                    <i className="fa-solid fa-house"></i>
-                </Link>
-                <span className="text-sm text-gray-400">
-                    <i className="fa-solid fa-chevron-right"></i>
-                </span>
-                <p className="text-gray-600 font-bold">Checkout</p>
-            </div>
-            <CheckOut cart={cart} />
-
-        </>
+        <div className="container py-4">
+            <CartHeader />
+            <Cart cart={cart} userId={userId}/>
+        </div>
     );
 }

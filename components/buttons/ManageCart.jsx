@@ -1,11 +1,27 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function AddToCartIncDec({ dictionary, productId, userId, stock }) {
+export default function ManageCart({
+    dictionary,
+    productId,
+    userId,
+    stock,
+    price,
+    discountPercentage,
+    quantity,
+}) {
     const router = useRouter();
+    const [count, setCount] = useState(quantity);
+    const [totalPrice, setTotalPrice] = useState(0);
+    useEffect(() => {
+        const discountedPrice = price * (1 - discountPercentage / 100);
+        setTotalPrice(discountedPrice * count);
+    }, [count, price, discountPercentage]);
 
-    const [count, setCount] = useState(1);
+    function onReloadCart() {
+        window.location.href="/cart";
+    }
 
     const increaseCount = () => {
         if (count < stock) {
@@ -22,13 +38,9 @@ export default function AddToCartIncDec({ dictionary, productId, userId, stock }
         if (!userId) {
             router.push("/login");
         } else {
-            if (
-                window.confirm(
-                    "Are you sure you want to add this item to cart?",
-                )
-            ) {
+            if (window.confirm("Confirm number of items?")) {
                 try {
-                    const response = await fetch("/api/addToCartIncDec", {
+                    const response = await fetch("/api/manageCart", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -43,7 +55,9 @@ export default function AddToCartIncDec({ dictionary, productId, userId, stock }
                     const data = await response.json();
 
                     if (response.ok) {
+                        // onReloadCart();
                         console.log("Product added to buttons:", data.message);
+
                     } else {
                         console.error(
                             "Failed to add product to buttons:",
@@ -54,46 +68,19 @@ export default function AddToCartIncDec({ dictionary, productId, userId, stock }
                     console.error("Error adding product to buttons:", error);
                 }
             }
-        }
-    };
-
-    const addToWishList = async (e) => {
-        if (!userId) {
-            router.push("/login");
-        } else {
-            if (
-                window.confirm(
-                    "Are you sure you want to add this item to wishlist?",
-                )
-            ) {
-                try {
-                    const response = await fetch("/api/wishList", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({ userId, productId }),
-                    });
-
-                    const data = await response.json();
-
-                    if (response.ok) {
-                        console.log("Product added to buttons:", data.message);
-                    } else {
-                        console.error(
-                            "Failed to add product to buttons:",
-                            data.error,
-                        );
-                    }
-                } catch (error) {
-                    console.error("Error adding product to buttons:", error);
-                }
+             else {
+                 setCount(quantity)
             }
         }
     };
 
     return (
         <>
+            <div className="mt-6 flex gap-3 border-b border-gray-200 pb-5 pt-5">
+                <div className="text-primary text-lg font-semibold">
+                    ${totalPrice.toFixed(2)}
+                </div>
+            </div>
             <div className="mt-4">
                 <h3 className="text-sm text-gray-800 uppercase mb-1">
                     {dictionary?.quantity}
@@ -110,13 +97,14 @@ export default function AddToCartIncDec({ dictionary, productId, userId, stock }
                     </div>
                     <div
                         className={`h-8 w-8 text-xl flex items-center justify-center select-none ${
-                            count >= stock ? 'text-gray-400 cursor-not-allowed' : 'cursor-pointer'
+                            count >= stock
+                                ? "text-gray-400 cursor-not-allowed"
+                                : "cursor-pointer"
                         }`}
                         onClick={increaseCount}
                     >
                         +
                     </div>
-
                 </div>
                 {count >= stock && (
                     <div className="text-red-500 text-sm mt-2">
@@ -130,14 +118,7 @@ export default function AddToCartIncDec({ dictionary, productId, userId, stock }
                     className="bg-primary border border-primary text-white px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:bg-transparent hover:text-primary transition"
                     onClick={addToCart}
                 >
-                    <i className="fa-solid fa-bag-shopping"></i>{" "}
-                    {dictionary?.add_to_cart}
-                </button>
-                <button
-                    className="border border-gray-300 text-gray-600 px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:text-primary transition"
-                    onClick={addToWishList}
-                >
-                    <i className="fa-solid fa-heart"></i> {dictionary?.wishlist}
+                    Update
                 </button>
             </div>
         </>

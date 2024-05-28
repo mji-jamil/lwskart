@@ -14,6 +14,10 @@ export default function Header({ dictionary, wishListCount, cartCount }) {
         window.location.href = "/";
     }
 
+    function onClickCart() {
+        window.location.href="/cart"
+    }
+
     return (
         <>
             <header className="py-4 shadow-sm bg-white">
@@ -52,8 +56,9 @@ export default function Header({ dictionary, wishListCount, cartCount }) {
                             )}
                         </Link>
                         <Link
-                            href="/checkout"
+                            href="/cart"
                             className="text-center text-gray-700 hover:text-primary transition relative"
+                            onClick={onClickCart}
                         >
                             <div className="text-2xl">
                                 <i className="fa-solid fa-bag-shopping"></i>

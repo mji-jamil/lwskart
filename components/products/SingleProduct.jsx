@@ -120,7 +120,7 @@ export default async function SingleProduct({ product, dictionary }) {
                         dictionary={dictionary}
                         productId={product?._id.toString()}
                         userId={userData?._id.toString()}
-                        
+                        stock={product?.stock}
                     />
 
                     <div className="flex gap-3 mt-4">
