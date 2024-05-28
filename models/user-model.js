@@ -55,19 +55,19 @@ const userSchema = new Schema(
         cart: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                default: []
+                ref: "Product"
             },
         ],
         wishlist: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                default: []
+                ref: "Product"
             },
         ],
         orders: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                default: []
+                ref: "Order"
             },
         ],
     },
