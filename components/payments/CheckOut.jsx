@@ -1,7 +1,11 @@
 import Link from "next/link";
 import CheckOutAddress from "@/components/payments/CheckOutAddress";
+import {auth} from "@/auth";
+import {getUserData} from "@/database/queries";
 
-export default function CheckOut({ cart }) {
+export default async function CheckOut({ cart }) {
+    const session = await auth()
+    const userData = await getUserData(session?.user?.email)
     const calculateDiscountedPrice = (price, discountPercentage) => {
         return price * (1 - discountPercentage / 100);
     };
@@ -26,7 +30,7 @@ export default function CheckOut({ cart }) {
     return (
         <>
             <div className="container grid grid-cols-12 items-start pb-16 pt-4 gap-6">
-                <CheckOutAddress />
+                <CheckOutAddress userData={userData}/>
 
                 <div className="col-span-4 border border-gray-200 p-4 rounded">
                     <h4 className="text-gray-800 text-lg mb-4 font-medium uppercase">
@@ -81,12 +85,12 @@ export default function CheckOut({ cart }) {
                         </label>
                     </div>
 
-                    <a
-                        href="#"
+                    <Link
+                        href={"/checkout/payment"}
                         className="block w-full py-3 px-4 text-center text-white bg-primary border border-primary rounded-md hover:bg-transparent hover:text-primary transition font-medium"
                     >
                         Place order
-                    </a>
+                    </Link>
                 </div>
             </div>
         </>

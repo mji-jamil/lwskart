@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 
 export default function DeleteItemFromCart({ productId, userId, onDelete }) {
     const router = useRouter();
-    
+
     function onReload() {
         window.location.href = "/cart";
     }
