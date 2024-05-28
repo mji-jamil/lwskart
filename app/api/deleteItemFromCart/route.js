@@ -7,23 +7,15 @@ export const POST = async (req) => {
 
     try {
         await dbConnect();
-        const user = await userModel.findById(userId);
-        if (!user) {
-            return new NextResponse("User not found", { status: 404 });
-        }
-        const productCount = user.cart.filter(id => id.toString() === productId).length;
-        const updatedUser = await userModel.findByIdAndUpdate(
+        const user = await userModel.findByIdAndUpdate(
             userId,
             { $pull: { cart: productId } },
             { new: true },
         );
 
-        // if (!user) {
-        //     return new NextResponse("User not found", { status: 404 });
-        // }
-        const product = await productModel.findById(productId);
-        product.stock += productCount;
-        await product.save();
+        if (!user) {
+            return new NextResponse("User not found", { status: 404 });
+        }
 
         return new NextResponse("Product removed from wishlist successfully", {
             status: 200,
