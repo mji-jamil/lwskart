@@ -53,26 +53,27 @@ export const POST = async (req) => {
         if (!product) {
             return new NextResponse("Product not found", { status: 404 });
         }
-
         if (product.stock <= 0) {
             return new NextResponse("Product out of stock", { status: 400 });
         }
 
-        // Use findOneAndUpdate to add the product to the user's cart
-        const user = await userModel.findOneAndUpdate(
-            { _id: userId.toString() },
-            {
-                $setOnInsert: { cart: [] },
-                $push: { cart: new mongoose.Types.ObjectId(productId) }
-            },
-            { new: true, upsert: true }
-        );
-
+        const user = await userModel.findById(userId);
         if (!user) {
             return new NextResponse("User not found", { status: 404 });
         }
 
-        // Update the product stock
+        const updatedUser = await userModel.findOneAndUpdate(
+            { _id: userId },
+            { $addToSet: { cart: new mongoose.Types.ObjectId(productId) } },
+            { new: true },
+        );
+
+        if (!updatedUser) {
+            return new NextResponse("Failed to update user cart", {
+                status: 500,
+            });
+        }
+
         product.stock -= 1;
         await product.save();
 
